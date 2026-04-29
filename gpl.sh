@@ -277,8 +277,11 @@ clean_root() {
 clean_board_cfg_sensitive() {
     echo "[gpl] clean_board_cfg_sensitive"
     cd "$SOURCE_PATH/board_cfg"
-    [ -f make_feeds.conf ] || return 0
-    sed -i '/^[[:space:]]*src-/d' make_feeds.conf
+    if [ -f make_feeds.conf ]; then
+        sed -i '/^[[:space:]]*src-/d' make_feeds.conf
+    fi
+    find "$SOURCE_PATH/board" -name "config.product.elx" -delete
+    find "$SOURCE_PATH/board" -name "README.ELX" -delete
 }
 
 detect_active_make_tag_lib() {
@@ -675,6 +678,29 @@ for folder in "${p_elx_folders[@]}"; do
     cp -a "$tmpdir/." "$folder/"
     rm -rf "$tmpdir"
 done
+}
+
+strip_p_elx_binaries() {
+    echo "[gpl] strip_p_elx_binaries"
+    local cross_strip
+    if ! cross_strip="$(resolve_shc_strip 2>/dev/null)"; then
+        echo "[gpl] strip_p_elx_binaries: skipped (no cross-strip found; set GPL_SHC_STRIP or GPL_SHC_CC)"
+        return 0
+    fi
+
+    local f file_type
+    find "$SOURCE_PATH/P_ELX" -type f | while read -r f; do
+        [[ "$f" == *.a ]] && continue
+        file_type=$(file -b "$f" 2>/dev/null)
+        [[ "$file_type" == *"ELF"*"ARM aarch64"* ]] || continue
+        if [[ "$f" == *.ko ]]; then
+            "$cross_strip" --strip-debug "$f"
+            echo "[gpl] stripped debug: ${f#$SOURCE_PATH/}"
+        else
+            "$cross_strip" "$f"
+            echo "[gpl] stripped: ${f#$SOURCE_PATH/}"
+        fi
+    done
 }
 
 clean_p_bsd_nginx() {
@@ -1322,6 +1348,7 @@ main_release() {
     clean_add_files
     strip_add_files_script_comments
     clean_p_elx
+    strip_p_elx_binaries
     clean_web_unused
     strip_web_comments
     clean_p_bsd_nginx
@@ -1369,7 +1396,7 @@ main_test() {
     main_release
 }
 
-main() {
+parse_args() {
     MODEL="${1:-EW-7786LBE}"
     shift || true
 
@@ -1394,6 +1421,15 @@ main() {
         esac
     done
 
+    # full mode implies protect-shell-scripts
+    if [ "$MODE" = "full" ] && [ "$PROTECT_SHELL_SCRIPTS" != "1" ]; then
+        PROTECT_SHELL_SCRIPTS=1
+        echo "[gpl] --mode full: enabling --protect-shell-scripts by default"
+    fi
+}
+
+main() {
+    parse_args "$@"
     validate_model
 
     if [ -n "$MODE" ]; then
