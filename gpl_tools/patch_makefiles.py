@@ -225,6 +225,12 @@ def patch_board_cfg_make_tag_kernel(root: Path):
 def patch_board_cfg_make_tag_init(root: Path):
     editor = FileEditor(root, "board_cfg/make_tag/make_tag_init.make")
     editor.delete_matching_lines(r"#include <cfg_board_variables\.h>", "remove cfg_board_variables include from generated cfg_board.h")
+    editor.replace_literal(
+        "\t$(E_T_GEN_CONFIG_SH) $(E_F_CONFIG_PRODUCT_ELX) $(E_F_G_CONFIG_H) g_config_elx.h\n",
+        "\t@if [ -f \"$(E_F_CONFIG_PRODUCT_ELX)\" ]; then $(E_T_GEN_CONFIG_SH) $(E_F_CONFIG_PRODUCT_ELX) $(E_F_G_CONFIG_H) g_config_elx.h; else printf '#ifndef _G_CONFIG_ELX_\\n#define _G_CONFIG_ELX_\\n#endif /* _G_CONFIG_ELX_ */\\n' > $(E_F_G_CONFIG_H)/g_config_elx.h; fi\n",
+        "make g_config_elx.h generation conditional on config.product.elx existence",
+        already_check=lambda text: 'if [ -f "$(E_F_CONFIG_PRODUCT_ELX)"' in text,
+    )
     editor.save()
 
 
