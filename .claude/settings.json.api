@@ -1,0 +1,18 @@
+{
+  "env": {
+    "CLAUDE_CODE_USE_VERTEX": "1",
+    "ANTHROPIC_VERTEX_PROJECT_ID": "edx-wifi-sw-elecom",
+    "CLOUD_ML_REGION": "global",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-6"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(./gpl.sh:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)"
+    ]
+  }
+}
