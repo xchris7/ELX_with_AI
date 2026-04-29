@@ -43,15 +43,15 @@ AI 索引地圖。修改 `gpl.sh` 或 `gpl_tools/` 前先讀這份。
 | 4 | `clean_board_cfg_make_tag_unused` | 321 | 只保留目前 toolchain 的 make_tag_lib（與 NA） |
 | 5 | `clean_board_dirs` | 344 | 只保留目標機種的 board/ 子目錄 |
 | 6 | `clean_board_include` | 356 | 刪 board_include 與 board/$BOARD_DIR/include |
-| 7 | `clean_add_files` | 410 | 只保留 etc/sysctl.d/sbin 白名單檔案；依 MODEL 選 inittab |
+| 7 | `clean_add_files` | 410 | 只保留 etc/sysctl.d/sbin 白名單檔案；依 MODEL 選 inittab；不保留 `dl_classical.sh` / `starteth_ipq6000.sh` / `usbTest.sh` |
 | 8 | `strip_add_files_script_comments` | 506 | 呼叫 strip_shell_comments.py 處理 add_files |
-| 9 | `clean_p_elx` | 585 | 只保留 P_ELX 元件指定的 binary/library + Makefile_*；移除 fwConfig |
+| 9 | `clean_p_elx` | 585 | 只保留 P_ELX 元件指定的 binary/library + Makefile_*；移除 fwConfig，且 `elecom_cloud_apps/config_manager/` 不保留 |
 | 10 | `clean_web_unused` | 494 | 刪 P_ELX/web/web_elecom/usb_disp.html |
 | 11 | `strip_web_comments` | 499 | 呼叫 strip_web_comments.py 處理 P_ELX/web |
 | 12 | `clean_p_bsd_nginx` | 661 | P_BSD/nginx-1.24.x：只留 LICENSE + Makefile_* + .build/ 預編譯產物 |
 | 13 | `clean_p_free` | 692 | P_FREE/net-snmp-5.9.x：只留 COPYING + Makefile_* + 預編譯 .so/snmpd/snmptrap |
 | 14 | `clean_image_dirs` | 365 | 只保留目標機種的 image/ 子目錄 |
-| 15 | `clean_image_dir_variants` | 377 | per-MODEL 移除 image/$IMAGE_DIR/ 內未被 createImage.sh / mk_image.sh 引用的歷史日期變體檔案（bl2-*.img / fip-*.bin / *_YYYYMMDD*.bin） |
+| 15 | `clean_image_dir_variants` | 377 | per-MODEL 移除 image/$IMAGE_DIR/ 內已廢棄的 UBI/MP helper/input、stale `release/MP` / `*-UBI.bin`，並清掉舊 `SHA256.txt` 內的 `UBI.bin` 紀錄 |
 | 16 | `clean_p_mtk_standalone` | 781 | P_MTK ated_ext/mii_mgr/mwctl 只留 binary；移除 sigma_daemon/sigma_dut |
 | 17 | `clean_p_mtk_kernel` | 826 | 只留 `MTK_WIFI_HWIFI_KO_LIST` 指定的 .ko + 其他模組固定 .ko + LICENSE + `Makefile_*`；`wifi7_add_files` 完整保留 |
 | 18 | `clean_wifi7_add_files` | 933 | family-aware：be72 移除 MT7992 alternate EEPROMs + 模型變體；be187 移除 MT7990 iFEM/iPAiLNA 變體；sigma_test 共用刪除 |
@@ -112,7 +112,7 @@ AI 索引地圖。修改 `gpl.sh` 或 `gpl_tools/` 前先讀這份。
 |------|------|---------|
 | `strip_shell_comments.py` | 移除 shell script 註解 | `strip_add_files_script_comments`, `strip_wifi7_wl_script_comments` |
 | `strip_web_comments.py` | 移除 web 檔案開發者註解 | `strip_web_comments` |
-| `patch_makefiles.py` | 修補 Makefile（GPL release 適用） | `patch_makefiles` |
+| `patch_makefiles.py` | 修補 Makefile（GPL release 適用；repo source code 的 release-output 政策修正應維護在這裡，會 rewrite `board_cfg/make_tag/*.make`、移除已清掉腳本的 board install line，以及清掉 `elecom_cloud_apps/config_manager` / `json2dbox` / `dbox2json` 殘留引用） | `patch_makefiles` |
 | `protect_runtime_shell_scripts.py` | wrapper + shc 混合保護 shell scripts | `protect_runtime_shell_scripts` |
 | `encrypt_shell_scripts.py` | wrapper 加密底層實作 | 由 `protect_runtime_shell_scripts.py` import |
 
@@ -164,6 +164,7 @@ P_ELX 元件變動（編輯 clean_p_elx() at line 585）
   │   → 加到 p_elx_folders=()
   │   → 在 case $folder 區塊新增分支，列出 keep_files（相對於元件目錄）
   │   → keep_files 可含子路徑，例如 "admlink/admlink"
+  │   → 若某個子目錄 binary（例如 `elecom_cloud_apps/config_manager`）不再保留，除了從 keep_files 拿掉，也要同步清掉 `patch_makefiles.py` 內的 Makefile/install 殘留引用
   │   → 註：web 是特例（continue），不適用本流程
   │
   └─ 元件改 source-shipping（要交付原始碼）
@@ -250,16 +251,10 @@ P_ELX 元件變動（編輯 clean_p_elx() at line 585）
 ### `clean_image_dir_variants()` 內未引用變體清單 (gpl.sh:377)
 
 - 列表來自手動 `grep -rln "<filename>" --include="*.sh" --include="Makefile*" --include="*.make"` 確認 0 引用。
-- 新增變體檔案進 image/$IMAGE_DIR/ 時，**必須先 grep 確認**是否被 createImage.sh / mk_image.sh 引用：被引用要從刪除清單拿掉。
+- 新增變體檔案進 image/$IMAGE_DIR/ 時，**必須先 grep 確認**是否進入目前的 UPG/TFTP 打包流程：會被消費的檔案不要加到刪除清單。
+- 目前 UBI/MP 相關 helper/input 已不保留：`createImage.sh`、`mk_image.sh`、`ubi-layout.cfg*`、`uboot-env.bin`。
+- 若來源 tree 先前跑過舊 packaging，`clean_image_dir_variants()` 也會額外清掉 `release/MP/`、`release/UPG/*-UBI.bin`，並從既有 `release/UPG/*-SHA256.txt` 移除 `UBI.bin` 條目。
 - 反之新加進來的歷史變體要主動加入刪除清單，否則會洩漏到 GPL release。
-
-### `patch_makefiles.py` 的 P_MTK glob 與 regex (patch_makefiles.py:485-528)
-
-- `patch_p_mtk_backports_makefile_1_gpl` / `patch_p_mtk_backports_makefile_2_bsp` 的 glob 是 `P_MTK/*/backports-5.15.81-1/...`，能匹配既有的 `mt7988-mt7992-MP3` 與 `v8.2.1.5`。新增 family 若沿用 `backports-5.15.81-1` 命名會自動覆蓋。
-- `Makefile_1_gpl` 的 `allnoconfig` 移除 regex，前面的「`# This generate a default configuration ...`」註解行用 `(?:...)?` 標為 optional：
-  - be72 .src 含此註解
-  - be187 .src **不含**此註解
-- 若新 family 的 `Makefile_1_gpl` `build_$(ENV_ARCH)` rule body 變動（不是只有 `allnoconfig`，還加了其他需 source 的指令），patch 需擴充——否則 quick mode 完成後 `cd board/<BOARD_DIR> && make` 會在 backports 階段炸掉（`No rule to make target 'allnoconfig'` 之類）。
 
 ### `patch_sensitive_values()` (gpl.sh:212)
 
@@ -272,6 +267,7 @@ P_ELX 元件變動（編輯 clean_p_elx() at line 585）
 - 反向（SHC 用的誤分到 wrapper）只會降低保護強度，但仍可執行。
 - `mtkwifi.sh*` 與 `wl_dbox2*.sh` 是 SHC——這些被 wireless init 直接呼叫。
 - `wl_define.sh*` 與 `sbin/fw_upgrade.sh` 是 WRAPPER。
+- 若腳本已被 `clean_add_files()` policy 排除，就不要再留在 `SHC_RULES` / `WRAPPER_RULES`；目前 `sbin/dl_classical.sh`、`sbin/starteth_ipq6000.sh`、`sbin/usbTest.sh` 已不保留。
 
 ### `clean_p_mtk_kernel()` 內 .ko 列表 (gpl.sh:826)
 
