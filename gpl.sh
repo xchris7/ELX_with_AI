@@ -133,7 +133,7 @@ validate_model() {
         EW-7476LBS)
             BOARD_DIR="ELECOM_WAB-BE36-S_EW-7476LBS"
             IMAGE_DIR="EW-7476LBS"
-            GPL_DIR_NAME="wab-be36s-gpl"
+            GPL_DIR_NAME="wab-be36-s-gpl"
             CUSTOMER_MODEL_NAME="WAB-BE36-S"
             ;;
         EW-7486LBE)

@@ -8,7 +8,7 @@
 
 | MODEL | GPL_DIR_NAME | CUSTOMER_MODEL_NAME | P_MTK 版本 | Wi-Fi 晶片 |
 |-------|-------------|---------------------|-----------|-----------|
-| EW-7476LBS | wab-be36s-gpl | WAB-BE36-S | mt7988-mt7992-MP3 | MT7992 |
+| EW-7476LBS | wab-be36-s-gpl | WAB-BE36-S | mt7988-mt7992-MP3 | MT7992 |
 | EW-7486LBE | wab-be36-gpl | WAB-BE36-M | mt7988-mt7992-MP3 | MT7992 |
 | EW-7786LBE | wab-be72-gpl | WAB-BE72-M | mt7988-mt7992-MP3 | MT7992 |
 | EW-7896LBE | wab-be187-gpl | WAB-BE187-M | v8.2.1.5 | MT7990 / MT7991 |
