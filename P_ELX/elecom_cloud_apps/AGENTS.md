@@ -85,7 +85,7 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 
 | 路徑 | 內容 |
 |------|------|
-| `config_manager/` | dbox ↔ JSON 雙向轉換器的 spec / meta-schema。修改 cloud UI 欄位前必讀此目錄 `CLAUDE.md`（其 Counterintuitive 列出 `enum:null` 動態 enum、`ui.required` vs `json.required` 等陷阱）。 |
+| `config_manager/` | **device 端 cloud config 契約**（Excel `_export_*` 衍生的機讀 spec + meta-schema）。`$ELX_SRC/.../config_manager/{dbox_to_json,json_to_dbox}/` source code 必須遵循。資料流：Excel → spec.json → source code 實作。**改 cloud UI 欄位 = 改 Excel → re-export spec.json → 跟著改兩側 source**。詳見 [`config_manager/CLAUDE.md`](config_manager/CLAUDE.md) §How source code uses this spec。 |
 
 ## Domain Knowledge（深入）
 
