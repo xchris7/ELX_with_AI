@@ -1,0 +1,299 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "ui-spec.schema.json",
+  "title": "Cloud UI Spec — meta-schema",
+  "description": "Validates a single tab's *.spec.json. Strict mode: unknown fields are rejected.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tab",
+    "version",
+    "jsonRoot",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "tab": {
+      "enum": [
+        "system_r05",
+        "wireless_r32",
+        "toolbox_r18"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "jsonRoot": {
+      "enum": [
+        "system_conf",
+        "wireless_settings",
+        "toolbox"
+      ]
+    },
+    "generatedFrom": {
+      "type": "string"
+    },
+    "entryCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/entry"
+      }
+    }
+  },
+  "definitions": {
+    "biLang": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "en": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ja": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "pathSegment": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "segment",
+            "array"
+          ],
+          "properties": {
+            "segment": {
+              "type": "string",
+              "minLength": 1
+            },
+            "array": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "ui",
+        "json"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRows": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ja": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          }
+        },
+        "ui": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "screen",
+            "label",
+            "inputType"
+          ],
+          "properties": {
+            "screen": {
+              "$ref": "#/definitions/biLang"
+            },
+            "no": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ]
+            },
+            "label": {
+              "$ref": "#/definitions/biLang"
+            },
+            "inputType": {
+              "enum": [
+                "dropdown",
+                "radio",
+                "checkbox",
+                "textbox",
+                "label",
+                ""
+              ]
+            },
+            "default": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            },
+            "range": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ]
+            },
+            "lsb": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ]
+            },
+            "required": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "validation": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "comment": {
+              "$ref": "#/definitions/biLang"
+            }
+          }
+        },
+        "json": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "type"
+              ],
+              "properties": {
+                "path": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/pathSegment"
+                  }
+                },
+                "item": {
+                  "$ref": "#/definitions/biLang"
+                },
+                "type": {
+                  "enum": [
+                    "string",
+                    "integer",
+                    "boolean"
+                  ]
+                },
+                "default": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "minimum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "maximum": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "required": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "enum": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "enumName": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "format": {
+                  "enum": [
+                    "ipv4",
+                    "email",
+                    "password",
+                    null
+                  ]
+                },
+                "pattern": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "description": {
+                  "$ref": "#/definitions/biLang"
+                },
+                "readOnly": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

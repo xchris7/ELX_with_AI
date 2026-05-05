@@ -1,0 +1,1941 @@
+{
+  "$schema": "./ui-spec.schema.json",
+  "tab": "system_r05",
+  "version": "r05",
+  "jsonRoot": "system_conf",
+  "generatedFrom": "_export_system_r05",
+  "entryCount": 34,
+  "entries": [
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.assignment",
+      "sourceRows": {
+        "ja": 12,
+        "en": 13
+      },
+      "ui": {
+        "screen": {
+          "en": "LAN-side IP Address",
+          "ja": "LAN側IPアドレス"
+        },
+        "no": 1,
+        "label": {
+          "en": "IP Address Assignment",
+          "ja": "IPアドレス割り当て"
+        },
+        "inputType": "dropdown",
+        "default": "DHCPクライアント",
+        "range": "固定IPアドレス/DHCPクライアント",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "assignment"
+        ],
+        "item": {
+          "en": null,
+          "ja": "IPアドレス割り当て"
+        },
+        "type": "string",
+        "default": "dhcp",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "dhcp",
+          "static"
+        ],
+        "enumName": [
+          "DHCPクライアント",
+          "静的IPアドレス"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.ipv4addr",
+      "sourceRows": {
+        "ja": 14,
+        "en": 15
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "IP Address",
+          "ja": "IPアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": "*1：According to IPv4 Address format",
+          "ja": "*1：IPv4アドレス形式"
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "ipv4addr"
+        ],
+        "item": {
+          "en": null,
+          "ja": "IPアドレス"
+        },
+        "type": "string",
+        "default": "192.168.3.1",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "IPアドレス割り当てがDHCPの場合は入力不要です。"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.subnet",
+      "sourceRows": {
+        "ja": 16,
+        "en": 17
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Subnet Mask",
+          "ja": "サブネットマスク"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*2：According to Subnet Mask format",
+          "ja": "*2：サブネットマスク形式"
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "subnet"
+        ],
+        "item": {
+          "en": null,
+          "ja": "サブネットマスク"
+        },
+        "type": "string",
+        "default": "255.255.255.0",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "IPアドレス割り当てがDHCPの場合は入力不要です。"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.dgw",
+      "sourceRows": {
+        "ja": 18,
+        "en": 19
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Default Gateway",
+          "ja": "デフォルトゲートウェイ"
+        },
+        "inputType": "dropdown",
+        "default": "DHCP",
+        "range": "ユーザー定義/DHCP",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "dgw"
+        ],
+        "item": {
+          "en": null,
+          "ja": "デフォルトゲートウェイ"
+        },
+        "type": "string",
+        "default": "dhcp",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "dhcp",
+          "user"
+        ],
+        "enumName": [
+          "DHCP",
+          "ユーザー定義"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.dgw_ipv4addr",
+      "sourceRows": {
+        "ja": 20,
+        "en": 21
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Default Gateway IP Address",
+          "ja": "デフォルトゲートウェイIPアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "dgw_ipv4addr"
+        ],
+        "item": {
+          "en": null,
+          "ja": "デフォルトゲートウェイIPアドレス"
+        },
+        "type": "string",
+        "default": "0.0.0.0",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "デフォルトゲートウェイがDHCPの場合は入力不要です。"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.dns_assignment",
+      "sourceRows": {
+        "ja": 22,
+        "en": 23
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "DNS Primary",
+          "ja": "DNSプライマリ"
+        },
+        "inputType": "dropdown",
+        "default": "DHCP",
+        "range": "ユーザー定義/DHCP",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "dns_assignment"
+        ],
+        "item": {
+          "en": null,
+          "ja": "DNSサーバーアドレス指定方法"
+        },
+        "type": "string",
+        "default": "dhcp",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "dhcp",
+          "user"
+        ],
+        "enumName": [
+          "DHCP",
+          "ユーザー定義"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.primary_ipv4addr",
+      "sourceRows": {
+        "ja": 24,
+        "en": 25
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "DNS Primary IP Address",
+          "ja": "DNSプライマリIPアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "primary_ipv4addr"
+        ],
+        "item": {
+          "en": null,
+          "ja": "プライマリアドレス"
+        },
+        "type": "string",
+        "default": "0.0.0.0",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "アドレス指定方法がDHCPの場合は入力不要です。"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.lan_ip_addr.secondary_ipv4addr",
+      "sourceRows": {
+        "ja": 26,
+        "en": 27
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "DNS Secondary IP Address",
+          "ja": "DNSセカンダリIPアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "lan_ip_addr",
+          "secondary_ipv4addr"
+        ],
+        "item": {
+          "en": null,
+          "ja": "セカンダリアドレス"
+        },
+        "type": "string",
+        "default": "0.0.0.0",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "アドレス指定方法がDHCPの場合は入力不要です。"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.dhcp.server_func",
+      "sourceRows": {
+        "ja": 28,
+        "en": 29
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "DHCP Server Functionality",
+          "ja": "DHCPサーバー機能"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "dhcp",
+          "server_func"
+        ],
+        "item": {
+          "en": null,
+          "ja": "DHCPサーバー機能"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.dhcp.start",
+      "sourceRows": {
+        "ja": 30,
+        "en": 31
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "DHCP Range(Start Address)",
+          "ja": "DHCP範囲開始IPアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*3",
+        "comment": {
+          "en": "*3: IPv4 address format. IP address within a network specified by a subnet mask. Max 256 devices, avoiding network addresses and broadcast addresses.",
+          "ja": "*3：IPv4アドレス形式。サブネットマスクで指定されるネットワーク内のIPアドレス。ネットワークアドレス、ブロードキャストアドレスを避けて最大256台"
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "dhcp",
+          "start"
+        ],
+        "item": {
+          "en": null,
+          "ja": "DHCP範囲開始IPアドレス"
+        },
+        "type": "string",
+        "default": "192.168.3.101",
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.dhcp.end",
+      "sourceRows": {
+        "ja": 32,
+        "en": 33
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 11,
+        "label": {
+          "en": "DHCP Range(End Address)",
+          "ja": "DHCP範囲終了IPアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*3",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "dhcp",
+          "end"
+        ],
+        "item": {
+          "en": null,
+          "ja": "DHCP範囲終了IPアドレス"
+        },
+        "type": "string",
+        "default": "192.168.3.130",
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_ip_address.dhcp.lease",
+      "sourceRows": {
+        "ja": 34,
+        "en": 35
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 12,
+        "label": {
+          "en": "DHCP Lease Time",
+          "ja": "DHCPリース時間"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": "1-168",
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_ip_address",
+          "dhcp",
+          "lease"
+        ],
+        "item": {
+          "en": null,
+          "ja": "DHCPリース時間(1-168時間)"
+        },
+        "type": "integer",
+        "default": 48,
+        "minimum": 1,
+        "maximum": 168,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.vlan.wan.mode",
+      "sourceRows": {
+        "ja": 36,
+        "en": 37
+      },
+      "ui": {
+        "screen": {
+          "en": "VLAN",
+          "ja": "VLAN"
+        },
+        "no": 1,
+        "label": {
+          "en": "WAN Port VLAN mode",
+          "ja": "WANポートVLANモード"
+        },
+        "inputType": "dropdown",
+        "default": "タグなしポート",
+        "range": "タグなしポート/タグ付きポート",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "vlan",
+          "wan",
+          "mode"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLANモード"
+        },
+        "type": "string",
+        "default": "untag",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "untag",
+          "tag"
+        ],
+        "enumName": [
+          "タグなしポート",
+          "タグ付きポート"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.vlan.wan.id",
+      "sourceRows": {
+        "ja": 38,
+        "en": 39
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "WAN Port VLAN ID",
+          "ja": "WANポートVLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "vlan",
+          "wan",
+          "id"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.vlan.lan.mode",
+      "sourceRows": {
+        "ja": 40,
+        "en": 41
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "LAN Port VLAN mode",
+          "ja": "LANポートVLANモード"
+        },
+        "inputType": "dropdown",
+        "default": "タグなしポート",
+        "range": "タグなしポート/タグ付きポート",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "vlan",
+          "lan",
+          "mode"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLANモード"
+        },
+        "type": "string",
+        "default": "untag",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "untag",
+          "tag"
+        ],
+        "enumName": [
+          "タグなしポート",
+          "タグ付きポート"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.vlan.lan.id",
+      "sourceRows": {
+        "ja": 42,
+        "en": 43
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "LAN Port IP",
+          "ja": "LANポートVLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "vlan",
+          "lan",
+          "id"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "wireless_settings.ssid.ssid.2g.vlan_id",
+      "sourceRows": {
+        "ja": 44,
+        "en": 45
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Wireless 2.4GHz VLAN ID",
+          "ja": "無線 2.4GHz VLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "wireless_settings",
+          "ssid",
+          "ssid",
+          {
+            "segment": "2g",
+            "array": true
+          },
+          "vlan_id"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "wireless_settings.ssid.ssid.5g.vlan_id",
+      "sourceRows": {
+        "ja": 46,
+        "en": 47
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Wireless 5GHz VLAN ID",
+          "ja": "無線 5GHz VLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "wireless_settings",
+          "ssid",
+          "ssid",
+          {
+            "segment": "5g",
+            "array": true
+          },
+          "vlan_id"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "wireless_settings.ssid.ssid.6g.vlan_id",
+      "sourceRows": {
+        "ja": 48,
+        "en": 49
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Wireless 6GHz VLAN ID",
+          "ja": "無線 6GHz VLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "wireless_settings",
+          "ssid",
+          "ssid",
+          {
+            "segment": "6g",
+            "array": true
+          },
+          "vlan_id"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "wireless_settings.ssid.ssid.mlo.vlan_id",
+      "sourceRows": {
+        "ja": 50,
+        "en": 51
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Wireless MLO VLAN ID",
+          "ja": "無線 MLO VLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "wireless_settings",
+          "ssid",
+          "ssid",
+          "mlo",
+          "vlan_id"
+        ],
+        "item": {
+          "en": null,
+          "ja": "VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.vlan.management",
+      "sourceRows": {
+        "ja": 52,
+        "en": 53
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Management VLAN ID",
+          "ja": "管理用VLAN ID"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 801345,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "vlan",
+          "management"
+        ],
+        "item": {
+          "en": null,
+          "ja": "管理用VLAN ID"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 4094,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.syslog.syslog.enable",
+      "sourceRows": {
+        "ja": 54,
+        "en": 55
+      },
+      "ui": {
+        "screen": {
+          "en": "Syslog Server",
+          "ja": "Syslogサーバー"
+        },
+        "no": 1,
+        "label": {
+          "en": "Transfer Logs",
+          "ja": "転送ログ"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "syslog",
+          "syslog",
+          "enable"
+        ],
+        "item": {
+          "en": null,
+          "ja": "有効"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.syslog.syslog.syslog_server",
+      "sourceRows": {
+        "ja": 56,
+        "en": 57
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Syslog Server",
+          "ja": "Syslogサーバー"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": "*1：According to IP Address format",
+          "ja": "*1：IPアドレス形式"
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "syslog",
+          "syslog",
+          "syslog_server"
+        ],
+        "item": {
+          "en": null,
+          "ja": "Syslogサーバー"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "ipv4",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "ui:.3",
+      "sourceRows": {
+        "ja": 58,
+        "en": 59
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Copy Logs to Attached USB Device.",
+          "ja": "USBデバイスにログをコピーする"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし|チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "system_conf.lan_port.wired_pd.enabled",
+      "sourceRows": {
+        "ja": 60,
+        "en": 61
+      },
+      "ui": {
+        "screen": {
+          "en": "LAN Configuration/LAN Port",
+          "ja": "LANポート"
+        },
+        "no": 1,
+        "label": {
+          "en": "Wired Port(PD) Enabled",
+          "ja": "有線ポート(PD) 有効"
+        },
+        "inputType": "dropdown",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_pd",
+          "enabled"
+        ],
+        "item": {
+          "en": null,
+          "ja": "有効"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_pd.portspeed",
+      "sourceRows": {
+        "ja": 62,
+        "en": 63
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Wired Port(PD) Port Speed & Duplex",
+          "ja": "有線ポート(PD) 速度と通信方式"
+        },
+        "inputType": "dropdown",
+        "default": "自動",
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1：Auto/10000Mbps-Full-Duplex/5000Mbps-Full-Duplex/2500Mbps-Full-duplex/1000Mbps-Full-Duplex/100Mbps-Full-Duplex/100Mbps-Half-Duplex",
+          "ja": "*1：自動/10000Mbps全二重通信方式/5000Mbps全二重通信方式/2500Mbps全二重通信方式/1000Mbps全二重通信方式/100Mbps全二重通信方式/100Mbps半二重通信方式"
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_pd",
+          "portspeed"
+        ],
+        "item": {
+          "en": null,
+          "ja": "速度と通信方式"
+        },
+        "type": "string",
+        "default": "auto",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "auto",
+          "100mbps-h",
+          "100mbps",
+          "1000mbps",
+          "2500mbps",
+          "5000mbps",
+          "10000mbps"
+        ],
+        "enumName": [
+          "自動",
+          "100Mbps半二重通信方式",
+          "100Mbps全二重通信方式",
+          "1000Mbps全二重通信方式",
+          "2500Mbps全二重通信方式",
+          "5000Mbps全二重通信方式",
+          "10000Mbps全二重通信方式"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_pd.mdi",
+      "sourceRows": {
+        "ja": 64,
+        "en": 65
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Wired Port(PD) MDI",
+          "ja": "有線ポート(PD) MDI"
+        },
+        "inputType": "dropdown",
+        "default": "自動",
+        "range": "自動",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_pd",
+          "mdi"
+        ],
+        "item": {
+          "en": null,
+          "ja": "MDI"
+        },
+        "type": "string",
+        "default": "auto",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "auto"
+        ],
+        "enumName": [
+          "自動"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_pd.flow_control",
+      "sourceRows": {
+        "ja": 66,
+        "en": 67
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Wired Port(PD) Flow Control",
+          "ja": "有線ポート(PD) フロー制御"
+        },
+        "inputType": "dropdown",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_pd",
+          "flow_control"
+        ],
+        "item": {
+          "en": null,
+          "ja": "フロー制御"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_pd.8023az",
+      "sourceRows": {
+        "ja": 68,
+        "en": 69
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Wired Port(PD) 802.3az",
+          "ja": "有線ポート(PD) 802.3az"
+        },
+        "inputType": "dropdown",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_pd",
+          "8023az"
+        ],
+        "item": {
+          "en": null,
+          "ja": "802.3az"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_lan.enabled",
+      "sourceRows": {
+        "ja": 70,
+        "en": 71
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Wired Port(LAN) Enabled",
+          "ja": "有線ポート(LAN) 有効"
+        },
+        "inputType": "dropdown",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_lan",
+          "enabled"
+        ],
+        "item": {
+          "en": null,
+          "ja": "有効"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_lan.portspeed",
+      "sourceRows": {
+        "ja": 72,
+        "en": 73
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Wired Port(LAN) Speed & Duplex",
+          "ja": "有線ポート(LAN) 速度と通信方式"
+        },
+        "inputType": "dropdown",
+        "default": "自動",
+        "range": "*2",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*2：Auto/2500Mbps-Full-Duplex/1000Mbps-Full-Duplex/100Mbps-Full-Duplex/10Mbps-Full-Duplex",
+          "ja": "*2：自動/2500Mbps全二重通信方式/1000Mbps全二重通信方式/100Mbps全二重通信方式/10Mbps全二重通信方式"
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_lan",
+          "portspeed"
+        ],
+        "item": {
+          "en": null,
+          "ja": "速度と通信方式"
+        },
+        "type": "string",
+        "default": "auto",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "auto",
+          "10mbps",
+          "100mbps",
+          "1000mbps",
+          "2500mbps"
+        ],
+        "enumName": [
+          "自動",
+          "10Mbps全二重通信方式",
+          "100Mbps全二重通信方式",
+          "1000Mbps全二重通信方式",
+          "2500Mbps全二重通信方式"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_lan.mdi",
+      "sourceRows": {
+        "ja": 74,
+        "en": 75
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Wired Port(LAN) MDI",
+          "ja": "有線ポート(LAN) MDI"
+        },
+        "inputType": "dropdown",
+        "default": "自動",
+        "range": "自動",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_lan",
+          "mdi"
+        ],
+        "item": {
+          "en": null,
+          "ja": "MDI"
+        },
+        "type": "string",
+        "default": "auto",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "auto"
+        ],
+        "enumName": [
+          "自動"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_lan.flow_control",
+      "sourceRows": {
+        "ja": 76,
+        "en": 77
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Wired Port(LAN) Flow Control",
+          "ja": "有線ポート(LAN) フロー制御"
+        },
+        "inputType": "dropdown",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_lan",
+          "flow_control"
+        ],
+        "item": {
+          "en": null,
+          "ja": "フロー制御"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "system_conf.lan_port.wired_lan.8023az",
+      "sourceRows": {
+        "ja": 78,
+        "en": 79
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "Wired Port(LAN) 802.3az",
+          "ja": "有線ポート(LAN) 802.3az"
+        },
+        "inputType": "dropdown",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "system_conf",
+          "lan_port",
+          "wired_lan",
+          "8023az"
+        ],
+        "item": {
+          "en": null,
+          "ja": "802.3az"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    }
+  ]
+}

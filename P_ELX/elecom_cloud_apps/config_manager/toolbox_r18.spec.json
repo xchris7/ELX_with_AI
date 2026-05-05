@@ -1,0 +1,5816 @@
+{
+  "$schema": "./ui-spec.schema.json",
+  "tab": "toolbox_r18",
+  "version": "r18",
+  "jsonRoot": "toolbox",
+  "generatedFrom": "_export_toolbox_r18",
+  "entryCount": 109,
+  "entries": [
+    {
+      "id": "toolbox.admin.account.admin_name",
+      "sourceRows": {
+        "ja": 12,
+        "en": 13
+      },
+      "ui": {
+        "screen": {
+          "en": "Admin",
+          "ja": "管理者"
+        },
+        "no": 1,
+        "label": {
+          "en": "Administrator Name",
+          "ja": "管理者名"
+        },
+        "inputType": "textbox",
+        "default": "admin",
+        "range": 46128,
+        "lsb": 4,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": "*1: Half-width alphanumeric, hyphen only. 4 to 16 characters. Hyphens cannot be used for the first and last.",
+          "ja": "*1：半角英数字及び「-」で4～16文字、「-」は先頭または末尾に設定できない"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "account",
+          "admin_name"
+        ],
+        "item": {
+          "en": null,
+          "ja": "管理者名"
+        },
+        "type": "string",
+        "default": "admin",
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^(?!-)(?!.*-$)[A-Za-z0-9-]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.account.admin_password",
+      "sourceRows": {
+        "ja": 14,
+        "en": 15
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Administrator Password",
+          "ja": "管理者パスワード"
+        },
+        "inputType": "textbox",
+        "default": "●●●●●",
+        "range": 11902,
+        "lsb": 8,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*2: Half-width alphanumeric characters and symbols (ASCII (DEC) 32 - 126) only. 8 to 32 characters.",
+          "ja": "*2：半角英数字及び記号 (ASCII(DEC)32～126)で8～32文字"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "account",
+          "admin_password"
+        ],
+        "item": {
+          "en": null,
+          "ja": "管理者パスワード"
+        },
+        "type": "string",
+        "default": "admin",
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": "password",
+        "pattern": "^[\\x20-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.account.admin_password_confirm",
+      "sourceRows": {
+        "ja": 16,
+        "en": 17
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Administrator Password(Confirm)",
+          "ja": "管理者パスワード(確認)"
+        },
+        "inputType": "textbox",
+        "default": "●●●●●",
+        "range": 11902,
+        "lsb": 8,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "account",
+          "admin_password_confirm"
+        ],
+        "item": {
+          "en": null,
+          "ja": "管理者パスワード(確認)"
+        },
+        "type": "string",
+        "default": "admin",
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": "password",
+        "pattern": "^[\\x20-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.account.login_timeout",
+      "sourceRows": {
+        "ja": 18,
+        "en": 19
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Loin Timeout",
+          "ja": "ログインタイムアウト"
+        },
+        "inputType": "textbox",
+        "default": 180,
+        "range": "120-3600",
+        "lsb": null,
+        "required": true,
+        "validation": "あり*3",
+        "comment": {
+          "en": "*3: Half-width numeric only",
+          "ja": "*3：半角数字のみ"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "account",
+          "login_timeout"
+        ],
+        "item": {
+          "en": null,
+          "ja": "ログインタイムアウト(秒)"
+        },
+        "type": "integer",
+        "default": 180,
+        "minimum": 120,
+        "maximum": 3600,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.account.unlimited",
+      "sourceRows": {
+        "ja": 20,
+        "en": 21
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Unlimited",
+          "ja": "無制限"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "account",
+          "unlimited"
+        ],
+        "item": {
+          "en": null,
+          "ja": "無制限"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.product_name",
+      "sourceRows": {
+        "ja": 22,
+        "en": 23
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Product Name",
+          "ja": "製品名"
+        },
+        "inputType": "textbox",
+        "default": "*4",
+        "range": "*4",
+        "lsb": null,
+        "required": true,
+        "validation": "あり*4",
+        "comment": {
+          "en": "*4: Half-width alphanumeric, hyphen only. 1 to 32 characters. Hyphens cannot be used for the first and last.\n(Initial Value:\"WAB\"+Wired LAN's MAC Address)",
+          "ja": "*4：半角英数字及び「-」で1～32文字、「-」は先頭または末尾に設定できない\n（初期値：「WAB」+有線LANのMACアドレス）"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "product_name"
+        ],
+        "item": {
+          "en": null,
+          "ja": "製品名"
+        },
+        "type": "string",
+        "default": "「WAB」+有線LANのMACアドレス",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^(?!-)(?!.*-$)[A-Za-z0-9-]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.management_protocol.http",
+      "sourceRows": {
+        "ja": 24,
+        "en": 25
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Management Protocol HTTP",
+          "ja": "管理プロトコル HTTP"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり*10",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*10: If unchecked, eht corresponding services will stop.",
+          "ja": "*10：チェックなしに変更した場合、該当のサービスを停止する"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "management_protocol",
+          "http"
+        ],
+        "item": {
+          "en": null,
+          "ja": "HTTP"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.management_protocol.https",
+      "sourceRows": {
+        "ja": 26,
+        "en": 27
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Management Protocol HTTPS",
+          "ja": "管理プロトコル HTTPS"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり*11",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": "*11: Always checked and cannot be change.",
+          "ja": "*11：常にチェックありで変更不可"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "management_protocol",
+          "https"
+        ],
+        "item": {
+          "en": null,
+          "ja": "HTTPS"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": true
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.management_protocol.ssh",
+      "sourceRows": {
+        "ja": 28,
+        "en": 29
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Management Protocol SSH",
+          "ja": "管理プロトコル SSH"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり*10",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "management_protocol",
+          "ssh"
+        ],
+        "item": {
+          "en": null,
+          "ja": "SSH"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.management_protocol.snmp",
+      "sourceRows": {
+        "ja": 30,
+        "en": 31
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "Management Protocol SNMP",
+          "ja": "管理プロトコル SNMP"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり*10",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "management_protocol",
+          "snmp"
+        ],
+        "item": {
+          "en": null,
+          "ja": "SNMP"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.ver",
+      "sourceRows": {
+        "ja": 32,
+        "en": 33
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 11,
+        "label": {
+          "en": "SNMP Version",
+          "ja": "SNMPバージョン"
+        },
+        "inputType": "dropdown",
+        "default": "v3",
+        "range": "v1/v2c/v3",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "ver"
+        ],
+        "item": {
+          "en": null,
+          "ja": "バージョン"
+        },
+        "type": "string",
+        "default": "v3",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "v1v2",
+          "v3"
+        ],
+        "enumName": [
+          "v1/v2c",
+          "v3"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.get_community",
+      "sourceRows": {
+        "ja": 34,
+        "en": 35
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 12,
+        "label": {
+          "en": "SNMP Get Community",
+          "ja": "SNMP取得コミュニティ"
+        },
+        "inputType": "textbox",
+        "default": "public",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*5",
+        "comment": {
+          "en": "*5: Half-width alphanumeric and symbols only. 6 to 32 characters. However, ASCII code=32(space) can't use.",
+          "ja": "*5：半角英数字及び記号で6～32文字。ただしASCII code=32(space)は使用不可。"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "get_community"
+        ],
+        "item": {
+          "en": null,
+          "ja": "取得コミュニティ"
+        },
+        "type": "string",
+        "default": "public",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[\\x21-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.set_community",
+      "sourceRows": {
+        "ja": 36,
+        "en": 37
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 13,
+        "label": {
+          "en": "SNMP Set Community",
+          "ja": "SNMP設定コミュニティ"
+        },
+        "inputType": "textbox",
+        "default": "private",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*5",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "set_community"
+        ],
+        "item": {
+          "en": null,
+          "ja": "設定コミュニティ"
+        },
+        "type": "string",
+        "default": "private",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[\\x21-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.username",
+      "sourceRows": {
+        "ja": 38,
+        "en": 39
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 14,
+        "label": {
+          "en": "SNMP Username",
+          "ja": "SNMPユーザー名"
+        },
+        "inputType": "textbox",
+        "default": "elecom",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*6",
+        "comment": {
+          "en": "*6: Half-width alphanumeric only. 1 to 32 characters.",
+          "ja": "*6：半角英数字で1～32文字"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "username"
+        ],
+        "item": {
+          "en": null,
+          "ja": "ユーザー名"
+        },
+        "type": "string",
+        "default": "elecom",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[0-9A-Za-z]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.auth_type",
+      "sourceRows": {
+        "ja": 40,
+        "en": 41
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 15,
+        "label": {
+          "en": "SNMP Authentication Type",
+          "ja": "SNMP認証タイプ"
+        },
+        "inputType": "dropdown",
+        "default": "SHA",
+        "range": "MD5/SHA/認証しない",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "auth_type"
+        ],
+        "item": {
+          "en": null,
+          "ja": "認証タイプ"
+        },
+        "type": "string",
+        "default": "sha",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "md5",
+          "sha",
+          "none"
+        ],
+        "enumName": [
+          "MD5",
+          "SHA",
+          "認証しない"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.auth_password",
+      "sourceRows": {
+        "ja": 42,
+        "en": 43
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 16,
+        "label": {
+          "en": "SNMP Authentication Password",
+          "ja": "SNMP認証パスワード"
+        },
+        "inputType": "textbox",
+        "default": 12345678,
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*7",
+        "comment": {
+          "en": "*7: Half-width alphanumeric and symbols only. 8 to 32 characters. However, ASCII code=32(space) can't use.",
+          "ja": "*7：半角英数字及び記号で8～32文字。ただしASCII code=32(space)は使用不可。"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "auth_password"
+        ],
+        "item": {
+          "en": null,
+          "ja": "認証パスワード"
+        },
+        "type": "string",
+        "default": 12345678,
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[\\x21-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.encryption_type",
+      "sourceRows": {
+        "ja": 44,
+        "en": 45
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 17,
+        "label": {
+          "en": "SNMP Encryption Type",
+          "ja": "SNMP暗号化タイプ"
+        },
+        "inputType": "dropdown",
+        "default": "AES128",
+        "range": "AES128/DES/暗号化しない",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "encryption_type"
+        ],
+        "item": {
+          "en": null,
+          "ja": "暗号化タイプ"
+        },
+        "type": "string",
+        "default": "aes",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "aes",
+          "des",
+          "none"
+        ],
+        "enumName": [
+          "AES128",
+          "DES",
+          "暗号化しない"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.pre-shared_key",
+      "sourceRows": {
+        "ja": 46,
+        "en": 47
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 18,
+        "label": {
+          "en": "Pre-shared key",
+          "ja": "Pre-sharedキー"
+        },
+        "inputType": "textbox",
+        "default": 12345678,
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*7",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "pre-shared_key"
+        ],
+        "item": {
+          "en": null,
+          "ja": "Pre-sharedキー"
+        },
+        "type": "string",
+        "default": 12345678,
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[\\x21-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.syslocation",
+      "sourceRows": {
+        "ja": 48,
+        "en": 49
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 19,
+        "label": {
+          "en": "SNMP sysLocation",
+          "ja": "SNMPシステムロケーション"
+        },
+        "inputType": "textbox",
+        "default": "Unknown",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*9",
+        "comment": {
+          "en": "*9: Half-width alphanumeric and symbols only. 1 to 128 characters. However, ASCII code=32(space) can't use.",
+          "ja": "*9：半角英数字及び記号で1～128文字。ただしASCII code=32(space)は使用不可。"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "syslocation"
+        ],
+        "item": {
+          "en": null,
+          "ja": "システムロケーション"
+        },
+        "type": "string",
+        "default": "Unknown",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[\\x21-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.trap",
+      "sourceRows": {
+        "ja": 50,
+        "en": 51
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 20,
+        "label": {
+          "en": "SNMP Trap",
+          "ja": "SNMPトラップ"
+        },
+        "inputType": "dropdown",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "trap"
+        ],
+        "item": {
+          "en": null,
+          "ja": "トラップ"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.trap_community",
+      "sourceRows": {
+        "ja": 52,
+        "en": 53
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 21,
+        "label": {
+          "en": "SNMP Trap Community",
+          "ja": "SNMPトラップコミュニティ"
+        },
+        "inputType": "textbox",
+        "default": "public",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*5",
+        "comment": {
+          "en": "*5: Half-width alphanumeric and symbols only. 6 to 32 characters.However, ASCII code=32(space) can't use.",
+          "ja": "*5：半角英数字及び記号で6～32文字。ただしASCII code=32(space)は使用不可。"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "trap_community"
+        ],
+        "item": {
+          "en": null,
+          "ja": "トラップコミュニティ"
+        },
+        "type": "string",
+        "default": "public",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[\\x21-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.admin.advanced.snmp.trap_manager",
+      "sourceRows": {
+        "ja": 54,
+        "en": 55
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 22,
+        "label": {
+          "en": "SNMP Trap Manager",
+          "ja": "SNMPトラップマネージャ"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*8",
+        "comment": {
+          "en": "*8: According to IPv4 Address format",
+          "ja": "*8：IPv4アドレス形式"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "admin",
+          "advanced",
+          "snmp",
+          "trap_manager"
+        ],
+        "item": {
+          "en": null,
+          "ja": "トラップマネージャ"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^(?=.{2,128}$)(?:(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)|[A-Za-z0-9]+(?:\\.[A-Za-z0-9]+)*)$",
+        "description": {
+          "en": null,
+          "ja": "IP アドレスまたはサーバー名（2 ～ 128 文字の英数字）"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "ui:date_and_time.1",
+      "sourceRows": {
+        "ja": 56,
+        "en": 57
+      },
+      "ui": {
+        "screen": {
+          "en": "Date and Time",
+          "ja": "日時"
+        },
+        "no": 1,
+        "label": {
+          "en": "Local Time Year",
+          "ja": "現在時刻 年"
+        },
+        "inputType": "dropdown",
+        "default": null,
+        "range": "2005-2037",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.2",
+      "sourceRows": {
+        "ja": 58,
+        "en": 59
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Local Time Month",
+          "ja": "現在時刻 月"
+        },
+        "inputType": "dropdown",
+        "default": null,
+        "range": 46034,
+        "lsb": 1,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.3",
+      "sourceRows": {
+        "ja": 60,
+        "en": 61
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Local Time Day",
+          "ja": "現在時刻 日"
+        },
+        "inputType": "dropdown",
+        "default": null,
+        "range": "1-31*1",
+        "lsb": 1,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1: Change according to selection of Year and Month",
+          "ja": "*1：年/月の選択に合わせて変わる"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.4",
+      "sourceRows": {
+        "ja": 62,
+        "en": 63
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Local Time Hour",
+          "ja": "現在時刻 時"
+        },
+        "inputType": "dropdown",
+        "default": null,
+        "range": "0-23",
+        "lsb": 1,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.5",
+      "sourceRows": {
+        "ja": 64,
+        "en": 65
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Local Time Minute",
+          "ja": "現在時刻 分"
+        },
+        "inputType": "dropdown",
+        "default": null,
+        "range": "00-59",
+        "lsb": 1,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.6",
+      "sourceRows": {
+        "ja": 66,
+        "en": 67
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Local Time Second",
+          "ja": "現在時刻 秒"
+        },
+        "inputType": "dropdown",
+        "default": null,
+        "range": "00-59",
+        "lsb": 1,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "toolbox.date_time.ntp.use_ntp",
+      "sourceRows": {
+        "ja": 68,
+        "en": 69
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Use NTP",
+          "ja": "NTPを使用する"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり",
+        "lsb": 1,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "date_time",
+          "ntp",
+          "use_ntp"
+        ],
+        "item": {
+          "en": null,
+          "ja": "NTPを使用する"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": true
+      }
+    },
+    {
+      "id": "toolbox.date_time.ntp.server_name",
+      "sourceRows": {
+        "ja": 70,
+        "en": 71
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Server Name",
+          "ja": "サーバー名"
+        },
+        "inputType": "textbox",
+        "default": "ntp.nict.jp",
+        "range": "2～128文字",
+        "lsb": 1,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*2: Half-width alphanumericals, periods, hyphens only. According to IP Address format or server name",
+          "ja": "*2：半角英数字、ピリオド、ハイフンのみで、IPアドレス形式またはサーバー名"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "date_time",
+          "ntp",
+          "server_name"
+        ],
+        "item": {
+          "en": null,
+          "ja": "NTPサーバー名"
+        },
+        "type": "string",
+        "default": "ntp.nict.jp",
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^(?=.{1,255}$)(?:(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)|(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?))*)$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.date_time.ntp.timezone_idx",
+      "sourceRows": {
+        "ja": 72,
+        "en": 73
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Timezone",
+          "ja": "タイムゾーン"
+        },
+        "inputType": "dropdown",
+        "default": "（GMT+09:00）大阪、札幌、東京",
+        "range": "*3",
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": "*3: Use the Timezone list from the connected PC",
+          "ja": "*3：PC内で持っているタイムゾーンのリストを使用する"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "date_time",
+          "ntp",
+          "timezone_idx"
+        ],
+        "item": {
+          "en": null,
+          "ja": "タイムゾーン"
+        },
+        "type": "string",
+        "default": 61,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "61"
+        ],
+        "enumName": [
+          "大阪、札幌、東京"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": true
+      }
+    },
+    {
+      "id": "ui:save/restore_settings.1",
+      "sourceRows": {
+        "ja": 74,
+        "en": 75
+      },
+      "ui": {
+        "screen": {
+          "en": "Save/Restore Settings",
+          "ja": "設定を保存/復元"
+        },
+        "no": 1,
+        "label": {
+          "en": "Restore Method",
+          "ja": "設定の復元"
+        },
+        "inputType": "radio",
+        "default": "PC上のファイルから復元",
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "1: Restore from a file on your PC/Restore from a file on the USB device",
+          "ja": "1：PC上のファイルからの復元/USBデバイス上のファイルから復元"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.2",
+      "sourceRows": {
+        "ja": 76,
+        "en": 77
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Encrypt the configuration file with a password",
+          "ja": "パスワードを使用して設定ファイルを暗号化します"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.3",
+      "sourceRows": {
+        "ja": 78,
+        "en": 79
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Save Password",
+          "ja": "保存パスワード"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*2: Half-width alphanumeric and symbols only. 1 to 32 characters. However, ASCII code=32(space) can't use for 1st and last.(ASCII code = 32-126)",
+          "ja": "*2：半角英数字及び記号で1～32文字。(ASCII code = 32-126)"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.4",
+      "sourceRows": {
+        "ja": 80,
+        "en": 81
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Open file with password",
+          "ja": "パスワードを使用して設定ファイルを開きます"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.5",
+      "sourceRows": {
+        "ja": 82,
+        "en": 83
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Restore Password",
+          "ja": "復元パスワード"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.6",
+      "sourceRows": {
+        "ja": 84,
+        "en": 85
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Auto Back Up",
+          "ja": "自動保存"
+        },
+        "inputType": "radio",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.7",
+      "sourceRows": {
+        "ja": 86,
+        "en": 87
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Auto saved file name",
+          "ja": "自動保存ファイル名"
+        },
+        "inputType": "textbox",
+        "default": "*3",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*4",
+        "comment": {
+          "en": "*3: Product Name as default. (\"WAB\"+MAC address)\n*4: 1-20 single-byte alphanumeric characters",
+          "ja": "*3：初期値は製品名（\"WAB\"+MACアドレス）\n*4：半角英数字1～20文字"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.8",
+      "sourceRows": {
+        "ja": 88,
+        "en": 89
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Save files number",
+          "ja": "自動保存件数"
+        },
+        "inputType": "textbox",
+        "default": 0,
+        "range": "0-255",
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:initialize.1",
+      "sourceRows": {
+        "ja": 90,
+        "en": 91
+      },
+      "ui": {
+        "screen": {
+          "en": "Initialize",
+          "ja": "初期化"
+        },
+        "no": 1,
+        "label": {
+          "en": "Factory default",
+          "ja": "工場出荷時設定"
+        },
+        "inputType": "radio",
+        "default": "工場出荷時設定に戻す",
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1: Return to factory default/Return to factory default excepting IP Address",
+          "ja": "*1：工場出荷時設定に戻す/IPアドレス設定を保持、その他は工場出荷時設定に戻す"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:update_firmware.",
+      "sourceRows": {
+        "ja": 92,
+        "en": 93
+      },
+      "ui": {
+        "screen": {
+          "en": "Update Firmware",
+          "ja": "ファームウェア更新"
+        },
+        "no": null,
+        "label": {
+          "en": null,
+          "ja": null
+        },
+        "inputType": null,
+        "default": null,
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": null,
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.update_notification.update_notification",
+      "sourceRows": {
+        "ja": 94,
+        "en": 95
+      },
+      "ui": {
+        "screen": {
+          "en": "Firmware Notification",
+          "ja": "ファームウェア確認"
+        },
+        "no": 1,
+        "label": {
+          "en": "Update Notification",
+          "ja": "新ファームウェア確認"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "update_notification",
+          "update_notification"
+        ],
+        "item": {
+          "en": null,
+          "ja": "新ファームウェア確認"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.checktime.schedule_setting",
+      "sourceRows": {
+        "ja": 96,
+        "en": 97
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Schedule Setting",
+          "ja": "確認実施時間"
+        },
+        "inputType": "dropdown",
+        "default": "Auto",
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1: Auto/00:00/00:30/01:00/…/23:30(Can be set at 30 minute intervals)",
+          "ja": "*1：Auto/00:00/00:30/01:00/…/23:30（30分間隔で設定可能）"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "checktime",
+          "schedule_setting"
+        ],
+        "item": {
+          "en": null,
+          "ja": "確認実施時間"
+        },
+        "type": "string",
+        "default": "auto",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "auto",
+          "00:00",
+          "00:30",
+          "01:00",
+          "01:30",
+          "02:00",
+          "02:30",
+          "03:00",
+          "03:30",
+          "04:00",
+          "04:30",
+          "05:00",
+          "05:30",
+          "06:00",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:00",
+          "08:30",
+          "09:00",
+          "09:30",
+          "10:00",
+          "10:30",
+          "11:00",
+          "11:30",
+          "12:00",
+          "12:30",
+          "13:00",
+          "13:30",
+          "14:00",
+          "14:30",
+          "15:00",
+          "15:30",
+          "16:00",
+          "16:30",
+          "17:00",
+          "17:30",
+          "18:00",
+          "18:30",
+          "19:00",
+          "19:30",
+          "20:00",
+          "20:30",
+          "21:00",
+          "21:30",
+          "22:00",
+          "22:30",
+          "23:00",
+          "23:30"
+        ],
+        "enumName": [
+          "自動",
+          "00:00",
+          "00:30",
+          "01:00",
+          "01:30",
+          "02:00",
+          "02:30",
+          "03:00",
+          "03:30",
+          "04:00",
+          "04:30",
+          "05:00",
+          "05:30",
+          "06:00",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:00",
+          "08:30",
+          "09:00",
+          "09:30",
+          "10:00",
+          "10:30",
+          "11:00",
+          "11:30",
+          "12:00",
+          "12:30",
+          "13:00",
+          "13:30",
+          "14:00",
+          "14:30",
+          "15:00",
+          "15:30",
+          "16:00",
+          "16:30",
+          "17:00",
+          "17:30",
+          "18:00",
+          "18:30",
+          "19:00",
+          "19:30",
+          "20:00",
+          "20:30",
+          "21:00",
+          "21:30",
+          "22:00",
+          "22:30",
+          "23:00",
+          "23:30"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mail_setting.receiver_mail_address",
+      "sourceRows": {
+        "ja": 98,
+        "en": 99
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Receiver Mail Address",
+          "ja": "宛先メールアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*2: According to Mail Address format",
+          "ja": "*2：メールアドレス形式"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mail_setting",
+          "receiver_mail_address"
+        ],
+        "item": {
+          "en": null,
+          "ja": "宛先メールアドレス"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "email",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.mail_account",
+      "sourceRows": {
+        "ja": 100,
+        "en": 101
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Mail Account",
+          "ja": "送信元メールアカウント"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "mail_account"
+        ],
+        "item": {
+          "en": null,
+          "ja": "送信元メールアカウント"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": "email",
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.SMTP_server_address",
+      "sourceRows": {
+        "ja": 102,
+        "en": 103
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "SMTP Server Address",
+          "ja": "SMTPサーバーアドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*3",
+        "comment": {
+          "en": "*3: Half-width alphanumericals, periods, hyphens only. According to IP Address format or server name",
+          "ja": "*3：半角英数字、ピリオド、ハイフンのみで、IPアドレス形式またはサーバー名"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "SMTP_server_address"
+        ],
+        "item": {
+          "en": null,
+          "ja": "SMTPサーバーアドレス"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^(?=.{1,255}$)(?:(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.(?:25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)|(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?))*)$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.SMTP_server_port",
+      "sourceRows": {
+        "ja": 104,
+        "en": 105
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "SMTP Server Port",
+          "ja": "SMTPサーバーポート"
+        },
+        "inputType": "textbox",
+        "default": 25,
+        "range": "1-65535",
+        "lsb": null,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "SMTP_server_port"
+        ],
+        "item": {
+          "en": null,
+          "ja": "SMTPサーバーポート"
+        },
+        "type": "integer",
+        "default": 25,
+        "minimum": 1,
+        "maximum": 65535,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.domain_name",
+      "sourceRows": {
+        "ja": 106,
+        "en": 107
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Domain Name",
+          "ja": "ドメイン名"
+        },
+        "inputType": "textbox",
+        "default": "localhost",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*4",
+        "comment": {
+          "en": "*4: Half-width alphanumericals, periods only.According to Domain Name format",
+          "ja": "*4：半角英数字、ピリオドのみで、ドメイン名形式"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "domain_name"
+        ],
+        "item": {
+          "en": null,
+          "ja": "ドメイン名"
+        },
+        "type": "string",
+        "default": "localhost",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[A-Za-z0-9]+(?:\\.[A-Za-z0-9]+)*$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.enable_authentication",
+      "sourceRows": {
+        "ja": 108,
+        "en": 109
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Enable Authentication",
+          "ja": "有効認証"
+        },
+        "inputType": "dropdown",
+        "default": "無効",
+        "range": "無効/SSL/TLS",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "enable_authentication"
+        ],
+        "item": {
+          "en": null,
+          "ja": "有効認証"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "disable",
+          "ssl",
+          "tls"
+        ],
+        "enumName": [
+          "無効",
+          "SSL",
+          "TLS"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.account",
+      "sourceRows": {
+        "ja": 110,
+        "en": 111
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Account",
+          "ja": "アカウント"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*5",
+        "comment": {
+          "en": "*5: Account name according to Email Authentication, 1-32 characters. Half-width alphanumeric characters and \".”、“_”、“+”、“-”、”@” are usable.",
+          "ja": "*5：E-MAIL認証方式に沿ったアカウント名で1～32文字。半角英数字及び \".”、“_”、“+”、“-”、”@”を使用可能"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "account"
+        ],
+        "item": {
+          "en": null,
+          "ja": "アカウント"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^[0-9A-Za-z._+\\-@]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.mailserver.password",
+      "sourceRows": {
+        "ja": 112,
+        "en": 113
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "Password",
+          "ja": "パスワード"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*6",
+        "comment": {
+          "en": "*6: Half-width alphanumeric and symbols only. 1 to 32 characters. However, ASCII code=32(space) can't use for 1st and last.",
+          "ja": "*6：半角英数字及び記号で1～32文字。Space(ASCII code = 32)は先頭もしくは末尾に設定不可。"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "mailserver",
+          "password"
+        ],
+        "item": {
+          "en": null,
+          "ja": "パスワード"
+        },
+        "type": "string",
+        "default": null,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": "^(?! )(?!.* $)[\\x20-\\x7E]+$",
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.send.sending_limit",
+      "sourceRows": {
+        "ja": 114,
+        "en": 115
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 11,
+        "label": {
+          "en": "Sending Limit",
+          "ja": "メール送信回数"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": "0-99",
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "send",
+          "sending_limit"
+        ],
+        "item": {
+          "en": null,
+          "ja": "メール送信回数"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 0,
+        "maximum": 99,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.fw_notification.send.sending_frequency",
+      "sourceRows": {
+        "ja": 116,
+        "en": 117
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 12,
+        "label": {
+          "en": "Sending Frequency",
+          "ja": "メール送信頻度"
+        },
+        "inputType": "textbox",
+        "default": 1,
+        "range": 46029,
+        "lsb": 1,
+        "required": true,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "fw_notification",
+          "send",
+          "sending_frequency"
+        ],
+        "item": {
+          "en": null,
+          "ja": "メール送信頻度"
+        },
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 7,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.imhere.imhere.duration",
+      "sourceRows": {
+        "ja": 118,
+        "en": 119
+      },
+      "ui": {
+        "screen": {
+          "en": "I'm here",
+          "ja": "I'm here"
+        },
+        "no": 1,
+        "label": {
+          "en": "Duration of Sound",
+          "ja": "音の持続時間"
+        },
+        "inputType": "textbox",
+        "default": 10,
+        "range": "1-300",
+        "lsb": 1,
+        "required": false,
+        "validation": "あり",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "imhere",
+          "imhere",
+          "duration"
+        ],
+        "item": {
+          "en": null,
+          "ja": "音の持続時間(秒)"
+        },
+        "type": "integer",
+        "default": 10,
+        "minimum": 1,
+        "maximum": 300,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.power_saving",
+      "sourceRows": {
+        "ja": 120,
+        "en": 121
+      },
+      "ui": {
+        "screen": {
+          "en": "Power Saving",
+          "ja": "節電"
+        },
+        "no": 1,
+        "label": {
+          "en": "Power Saving",
+          "ja": "節電"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          "power_saving"
+        ],
+        "item": {
+          "en": null,
+          "ja": "節電"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.setting.led",
+      "sourceRows": {
+        "ja": 122,
+        "en": 123
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "LED Settings",
+          "ja": "LED設定"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          "setting",
+          "led"
+        ],
+        "item": {
+          "en": null,
+          "ja": "LED設定　オフ"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.setting.2g",
+      "sourceRows": {
+        "ja": 124,
+        "en": 125
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "WLAN(2.4G)",
+          "ja": "無線 2.4GHz"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          "setting",
+          "2g"
+        ],
+        "item": {
+          "en": null,
+          "ja": "無線2.4GHz　無効"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.setting.5g",
+      "sourceRows": {
+        "ja": 126,
+        "en": 127
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "WLAN (5GHz)",
+          "ja": "無線 5GHz"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          "setting",
+          "5g"
+        ],
+        "item": {
+          "en": null,
+          "ja": "無線5GHz　無効"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.setting.6g",
+      "sourceRows": {
+        "ja": 128,
+        "en": 129
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "WLAN (6GHz)",
+          "ja": "無線 6GHz"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          "setting",
+          "6g"
+        ],
+        "item": {
+          "en": null,
+          "ja": "無線6GHz　無効"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.setting.guest",
+      "sourceRows": {
+        "ja": 130,
+        "en": 131
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Guest Network",
+          "ja": "ゲストネットワーク"
+        },
+        "inputType": "checkbox",
+        "default": "チェックあり",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          "setting",
+          "guest"
+        ],
+        "item": {
+          "en": null,
+          "ja": "ゲストネットワーク　無効"
+        },
+        "type": "boolean",
+        "default": true,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.mon",
+      "sourceRows": {
+        "ja": 132,
+        "en": 133
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Mon",
+          "ja": "月曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "mon"
+        ],
+        "item": {
+          "en": null,
+          "ja": "月曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.tue",
+      "sourceRows": {
+        "ja": 134,
+        "en": 135
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Tue",
+          "ja": "火曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "tue"
+        ],
+        "item": {
+          "en": null,
+          "ja": "火曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.wed",
+      "sourceRows": {
+        "ja": 136,
+        "en": 137
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Wed",
+          "ja": "水曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "wed"
+        ],
+        "item": {
+          "en": null,
+          "ja": "水曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.thu",
+      "sourceRows": {
+        "ja": 138,
+        "en": 139
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "Thu",
+          "ja": "木曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "thu"
+        ],
+        "item": {
+          "en": null,
+          "ja": "木曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.fri",
+      "sourceRows": {
+        "ja": 140,
+        "en": 141
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 11,
+        "label": {
+          "en": "Fri",
+          "ja": "金曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "fri"
+        ],
+        "item": {
+          "en": null,
+          "ja": "金曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.sat",
+      "sourceRows": {
+        "ja": 142,
+        "en": 143
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 12,
+        "label": {
+          "en": "Sat",
+          "ja": "土曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "sat"
+        ],
+        "item": {
+          "en": null,
+          "ja": "土曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.sun",
+      "sourceRows": {
+        "ja": 144,
+        "en": 145
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 13,
+        "label": {
+          "en": "Sun",
+          "ja": "日曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "sun"
+        ],
+        "item": {
+          "en": null,
+          "ja": "日曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.start_time",
+      "sourceRows": {
+        "ja": 146,
+        "en": 147
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 14,
+        "label": {
+          "en": "Start Time",
+          "ja": "開始時間"
+        },
+        "inputType": "dropdown",
+        "default": 0,
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1: 0:00/0:30/1:00/1:30/…/23:30(Can be set at 30 minute intervals)",
+          "ja": "*1：0:00/0:30/1:00/1:30/…/23:30（30分間隔で設定可能）"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "start_time"
+        ],
+        "item": {
+          "en": null,
+          "ja": "開始時間"
+        },
+        "type": "string",
+        "default": 0,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "0000",
+          "0030",
+          "0100",
+          "0130",
+          "0200",
+          "0230",
+          "0300",
+          "0330",
+          "0400",
+          "0430",
+          "0500",
+          "0530",
+          "0600",
+          "0630",
+          "0700",
+          "0730",
+          "0800",
+          "0830",
+          "0900",
+          "0930",
+          "1000",
+          "1030",
+          "1100",
+          "1130",
+          "1200",
+          "1230",
+          "1300",
+          "1330",
+          "1400",
+          "1430",
+          "1500",
+          "1530",
+          "1600",
+          "1630",
+          "1700",
+          "1730",
+          "1800",
+          "1830",
+          "1900",
+          "1930",
+          "2000",
+          "2030",
+          "2100",
+          "2130",
+          "2200",
+          "2230",
+          "2300",
+          "2330"
+        ],
+        "enumName": [
+          "00:00",
+          "00:30",
+          "01:00",
+          "01:30",
+          "02:00",
+          "02:30",
+          "03:00",
+          "03:30",
+          "04:00",
+          "04:30",
+          "05:00",
+          "05:30",
+          "06:00",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:00",
+          "08:30",
+          "09:00",
+          "09:30",
+          "10:00",
+          "10:30",
+          "11:00",
+          "11:30",
+          "12:00",
+          "12:30",
+          "13:00",
+          "13:30",
+          "14:00",
+          "14:30",
+          "15:00",
+          "15:30",
+          "16:00",
+          "16:30",
+          "17:00",
+          "17:30",
+          "18:00",
+          "18:30",
+          "19:00",
+          "19:30",
+          "20:00",
+          "20:30",
+          "21:00",
+          "21:30",
+          "22:00",
+          "22:30",
+          "23:00",
+          "23:30"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.power_saving.power_saving.schedule.end_time",
+      "sourceRows": {
+        "ja": 148,
+        "en": 149
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 15,
+        "label": {
+          "en": "End Tune",
+          "ja": "終了時間"
+        },
+        "inputType": "dropdown",
+        "default": 0.0208333333333333,
+        "range": "*2",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*2: 0:30/1:00/1:30/2:00/…/24:00(Can be set at 30 minute intervals)",
+          "ja": "*2：0:30/1:00/1:30/2:00/…/24:00（30分間隔で設定可能）"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "power_saving",
+          "power_saving",
+          {
+            "segment": "schedule",
+            "array": true
+          },
+          "end_time"
+        ],
+        "item": {
+          "en": null,
+          "ja": "終了時間"
+        },
+        "type": "string",
+        "default": 30,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "0030",
+          "0100",
+          "0130",
+          "0200",
+          "0230",
+          "0300",
+          "0330",
+          "0400",
+          "0430",
+          "0500",
+          "0530",
+          "0600",
+          "0630",
+          "0700",
+          "0730",
+          "0800",
+          "0830",
+          "0900",
+          "0930",
+          "1000",
+          "1030",
+          "1100",
+          "1130",
+          "1200",
+          "1230",
+          "1300",
+          "1330",
+          "1400",
+          "1430",
+          "1500",
+          "1530",
+          "1600",
+          "1630",
+          "1700",
+          "1730",
+          "1800",
+          "1830",
+          "1900",
+          "1930",
+          "2000",
+          "2030",
+          "2100",
+          "2130",
+          "2200",
+          "2230",
+          "2300",
+          "2330",
+          "2400"
+        ],
+        "enumName": [
+          "00:30",
+          "01:00",
+          "01:30",
+          "02:00",
+          "02:30",
+          "03:00",
+          "03:30",
+          "04:00",
+          "04:30",
+          "05:00",
+          "05:30",
+          "06:00",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:00",
+          "08:30",
+          "09:00",
+          "09:30",
+          "10:00",
+          "10:30",
+          "11:00",
+          "11:30",
+          "12:00",
+          "12:30",
+          "13:00",
+          "13:30",
+          "14:00",
+          "14:30",
+          "15:00",
+          "15:30",
+          "16:00",
+          "16:30",
+          "17:00",
+          "17:30",
+          "18:00",
+          "18:30",
+          "19:00",
+          "19:30",
+          "20:00",
+          "20:30",
+          "21:00",
+          "21:30",
+          "22:00",
+          "22:30",
+          "23:00",
+          "23:30",
+          "24:00"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "ui:.16",
+      "sourceRows": {
+        "ja": 150,
+        "en": 151
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 16,
+        "label": {
+          "en": "Schedule Table",
+          "ja": "スケジュールテーブル"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.reboot",
+      "sourceRows": {
+        "ja": 152,
+        "en": 153
+      },
+      "ui": {
+        "screen": {
+          "en": "Reboot Schedule",
+          "ja": "再起動スケジュール"
+        },
+        "no": 1,
+        "label": {
+          "en": "Reboot",
+          "ja": "再起動"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          "reboot"
+        ],
+        "item": {
+          "en": null,
+          "ja": "再起動"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.mon",
+      "sourceRows": {
+        "ja": 154,
+        "en": 155
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Mon",
+          "ja": "月曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "mon"
+        ],
+        "item": {
+          "en": null,
+          "ja": "月曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.tue",
+      "sourceRows": {
+        "ja": 156,
+        "en": 157
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Tue",
+          "ja": "火曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "tue"
+        ],
+        "item": {
+          "en": null,
+          "ja": "火曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.wed",
+      "sourceRows": {
+        "ja": 158,
+        "en": 159
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Wed",
+          "ja": "水曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "wed"
+        ],
+        "item": {
+          "en": null,
+          "ja": "水曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.thu",
+      "sourceRows": {
+        "ja": 160,
+        "en": 161
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Thu",
+          "ja": "木曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "thu"
+        ],
+        "item": {
+          "en": null,
+          "ja": "木曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.fri",
+      "sourceRows": {
+        "ja": 162,
+        "en": 163
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Fri",
+          "ja": "金曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "fri"
+        ],
+        "item": {
+          "en": null,
+          "ja": "金曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.sat",
+      "sourceRows": {
+        "ja": 164,
+        "en": 165
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Sat",
+          "ja": "土曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "sat"
+        ],
+        "item": {
+          "en": null,
+          "ja": "土曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.sun",
+      "sourceRows": {
+        "ja": 166,
+        "en": 167
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Sun",
+          "ja": "日曜日"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "sun"
+        ],
+        "item": {
+          "en": null,
+          "ja": "日曜日"
+        },
+        "type": "boolean",
+        "default": false,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.reboot.reboot_schedule.schedule_table.reboot_time",
+      "sourceRows": {
+        "ja": 168,
+        "en": 169
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Reboot Time",
+          "ja": "再起動時間"
+        },
+        "inputType": "dropdown",
+        "default": 0,
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1: 0:00/0:30/1:00/1:30/…/23:30(Can be set at 30 minute intervals)",
+          "ja": "*1：0:00/0:30/1:00/1:30/…/23:30（30分間隔で設定可能）"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "reboot",
+          "reboot_schedule",
+          {
+            "segment": "schedule_table",
+            "array": true
+          },
+          "reboot_time"
+        ],
+        "item": {
+          "en": null,
+          "ja": "再起動時間"
+        },
+        "type": "string",
+        "default": 0,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "0000",
+          "0030",
+          "0100",
+          "0130",
+          "0200",
+          "0230",
+          "0300",
+          "0330",
+          "0400",
+          "0430",
+          "0500",
+          "0530",
+          "0600",
+          "0630",
+          "0700",
+          "0730",
+          "0800",
+          "0830",
+          "0900",
+          "0930",
+          "1000",
+          "1030",
+          "1100",
+          "1130",
+          "1200",
+          "1230",
+          "1300",
+          "1330",
+          "1400",
+          "1430",
+          "1500",
+          "1530",
+          "1600",
+          "1630",
+          "1700",
+          "1730",
+          "1800",
+          "1830",
+          "1900",
+          "1930",
+          "2000",
+          "2030",
+          "2100",
+          "2130",
+          "2200",
+          "2230",
+          "2300",
+          "2330"
+        ],
+        "enumName": [
+          "00:00",
+          "00:30",
+          "01:00",
+          "01:30",
+          "02:00",
+          "02:30",
+          "03:00",
+          "03:30",
+          "04:00",
+          "04:30",
+          "05:00",
+          "05:30",
+          "06:00",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:00",
+          "08:30",
+          "09:00",
+          "09:30",
+          "10:00",
+          "10:30",
+          "11:00",
+          "11:30",
+          "12:00",
+          "12:30",
+          "13:00",
+          "13:30",
+          "14:00",
+          "14:30",
+          "15:00",
+          "15:30",
+          "16:00",
+          "16:30",
+          "17:00",
+          "17:30",
+          "18:00",
+          "18:30",
+          "19:00",
+          "19:30",
+          "20:00",
+          "20:30",
+          "21:00",
+          "21:30",
+          "22:00",
+          "22:30",
+          "23:00",
+          "23:30"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "ui:.10",
+      "sourceRows": {
+        "ja": 170,
+        "en": 171
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "Schedule Table",
+          "ja": "スケジュールテーブル"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "toolbox.led_setting.led_setting.power",
+      "sourceRows": {
+        "ja": 172,
+        "en": 173
+      },
+      "ui": {
+        "screen": {
+          "en": "LED Setting",
+          "ja": "LED設定"
+        },
+        "no": 1,
+        "label": {
+          "en": "Power LED",
+          "ja": "電源LED"
+        },
+        "inputType": "radio",
+        "default": "On",
+        "range": "On/Off",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "led_setting",
+          "led_setting",
+          "power"
+        ],
+        "item": {
+          "en": null,
+          "ja": "電源LED"
+        },
+        "type": "string",
+        "default": "on",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "on",
+          "off"
+        ],
+        "enumName": [
+          "オン",
+          "オフ"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.led_setting.led_setting.wired",
+      "sourceRows": {
+        "ja": 174,
+        "en": 175
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Wired LED",
+          "ja": "有線LED"
+        },
+        "inputType": "radio",
+        "default": "On",
+        "range": "On/Off",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "led_setting",
+          "led_setting",
+          "wired"
+        ],
+        "item": {
+          "en": null,
+          "ja": "有線LED"
+        },
+        "type": "string",
+        "default": "on",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "on",
+          "off"
+        ],
+        "enumName": [
+          "オン",
+          "オフ"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.led_setting.led_setting.2g",
+      "sourceRows": {
+        "ja": 176,
+        "en": 177
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "WLAN2.4G LED",
+          "ja": "無線2.4G LED"
+        },
+        "inputType": "radio",
+        "default": "On",
+        "range": "On/Off",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "led_setting",
+          "led_setting",
+          "2g"
+        ],
+        "item": {
+          "en": null,
+          "ja": "2.4GHz LED"
+        },
+        "type": "string",
+        "default": "on",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "on",
+          "off"
+        ],
+        "enumName": [
+          "オン",
+          "オフ"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.led_setting.led_setting.5g",
+      "sourceRows": {
+        "ja": 178,
+        "en": 179
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "WLAN5G LED",
+          "ja": "無線5G LED"
+        },
+        "inputType": "radio",
+        "default": "On",
+        "range": "On/Off",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "led_setting",
+          "led_setting",
+          "5g"
+        ],
+        "item": {
+          "en": null,
+          "ja": "5GHz LED"
+        },
+        "type": "string",
+        "default": "on",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "on",
+          "off"
+        ],
+        "enumName": [
+          "オン",
+          "オフ"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.led_setting.led_setting.6g",
+      "sourceRows": {
+        "ja": 180,
+        "en": 181
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "WLAN6G LED",
+          "ja": "無線6G LED"
+        },
+        "inputType": "radio",
+        "default": "On",
+        "range": "On/Off",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "led_setting",
+          "led_setting",
+          "6g"
+        ],
+        "item": {
+          "en": null,
+          "ja": "6GHz LED"
+        },
+        "type": "string",
+        "default": "on",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "on",
+          "off"
+        ],
+        "enumName": [
+          "オン",
+          "オフ"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.led_setting.led_setting.usb",
+      "sourceRows": {
+        "ja": 182,
+        "en": 183
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "USB LED",
+          "ja": "USB LED"
+        },
+        "inputType": "radio",
+        "default": "On",
+        "range": "On/Off",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "led_setting",
+          "led_setting",
+          "usb"
+        ],
+        "item": {
+          "en": null,
+          "ja": "USB LED"
+        },
+        "type": "string",
+        "default": "on",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "on",
+          "off"
+        ],
+        "enumName": [
+          "オン",
+          "オフ"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "ui:restart.",
+      "sourceRows": {
+        "ja": 184,
+        "en": 185
+      },
+      "ui": {
+        "screen": {
+          "en": "Restart",
+          "ja": "再起動"
+        },
+        "no": null,
+        "label": {
+          "en": null,
+          "ja": null
+        },
+        "inputType": null,
+        "default": null,
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": null,
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:adminlink_basic_settings.1",
+      "sourceRows": {
+        "ja": 186,
+        "en": 187
+      },
+      "ui": {
+        "screen": {
+          "en": "AdminLink Basic Settings",
+          "ja": "アドミリンク基本設定"
+        },
+        "no": 1,
+        "label": {
+          "en": "Adminlink Function",
+          "ja": "アドミリンク機能"
+        },
+        "inputType": "radio",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.2",
+      "sourceRows": {
+        "ja": 188,
+        "en": 189
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Registered Device Registration Code",
+          "ja": "登録済みデバイス登録コード"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*1",
+        "comment": {
+          "en": "*1: 9 single-byte numbers or single-byte characters A to F (or a to f)",
+          "ja": "*1：半角数字または半角文字のA～F（またはa ～ f）で9文字"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.3",
+      "sourceRows": {
+        "ja": 190,
+        "en": 191
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Serial Number",
+          "ja": "シリアル番号"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*2: Up to 50 alphanumeric characters",
+          "ja": "*2：半角英数字で50文字以内"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.4",
+      "sourceRows": {
+        "ja": 192,
+        "en": 193
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Device Name",
+          "ja": "デバイス名"
+        },
+        "inputType": "textbox",
+        "default": "（製品名*3）",
+        "range": null,
+        "lsb": null,
+        "required": true,
+        "validation": "あり*3",
+        "comment": {
+          "en": "*3: string by \"WAB\"+(MAC address),   *4：Max 100 characters. Strings containing specific half-width symbols (, \"'` = $ &) and strings containing only half-width spaces are prohibited from being entered.",
+          "ja": "*3：\"WAB\"+MACアドレスで表される文字列,   *4：最大100文字以内。半角スペースのみの文字列、または特定の半角記号（ , \" ' ` = $ &）の入力を禁止する。"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.5",
+      "sourceRows": {
+        "ja": 194,
+        "en": 195
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Remarks",
+          "ja": "備考"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*4",
+        "comment": {
+          "en": "*4: Max 255 characters. Strings containing specific half-width symbols (, \"'` = $ &) and strings containing only half-width spaces are prohibited from being entered.",
+          "ja": "*4：最大255文字以内。半角スペースのみの文字列、または特定の半角記号（ , \" ' ` = $ &）の入力を禁止する。"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.6",
+      "sourceRows": {
+        "ja": 196,
+        "en": 197
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Delete Registration",
+          "ja": "登録削除"
+        },
+        "inputType": "checkbox",
+        "default": "チェックなし",
+        "range": "チェックなし/チェックあり",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:adminlink_advanced_settings.1",
+      "sourceRows": {
+        "ja": 198,
+        "en": 199
+      },
+      "ui": {
+        "screen": {
+          "en": "AdminLink Advanced Settings",
+          "ja": "アドミリンク詳細設定"
+        },
+        "no": 1,
+        "label": {
+          "en": "Proxy Server",
+          "ja": "プロキシーサーバー"
+        },
+        "inputType": "radio",
+        "default": "使用しない",
+        "range": "使用しない/使用する",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.2",
+      "sourceRows": {
+        "ja": 200,
+        "en": 201
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Address",
+          "ja": "アドレス"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": null,
+        "validation": "あり*2",
+        "comment": {
+          "en": "*1: Required if proxy server is [use]\n*2: According to IPv4 Address format",
+          "ja": "*1：プロキシーサーバーが「使用する」の場合は必須\n*2：IPv4アドレス形式"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.3",
+      "sourceRows": {
+        "ja": 202,
+        "en": 203
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Port",
+          "ja": "ポート"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": "1-65535",
+        "lsb": null,
+        "required": null,
+        "validation": "あり*4",
+        "comment": {
+          "en": "*3: Required if proxy server is [use]\n*4: Half-width numeric only",
+          "ja": "*3：プロキシーサーバーが「使用する」の場合は必須\n*4：半角数字のみ"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.4",
+      "sourceRows": {
+        "ja": 204,
+        "en": 205
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "Username",
+          "ja": "ユーザー名"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*5",
+        "comment": {
+          "en": "*5: Up to 255 characters in single-byte alphanumeric characters and symbols.",
+          "ja": "*5：半角英数字及び記号で255文字以内"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "ui:.5",
+      "sourceRows": {
+        "ja": 206,
+        "en": 207
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 5,
+        "label": {
+          "en": "Password",
+          "ja": "パスワード"
+        },
+        "inputType": "textbox",
+        "default": "（空白）",
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": "あり*6",
+        "comment": {
+          "en": "*6: Up to 255 characters in single-byte alphanumeric characters and symbols.",
+          "ja": "*6：半角英数字及び記号で255文字以内"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "toolbox.adminlink.advanced.remote_control",
+      "sourceRows": {
+        "ja": 208,
+        "en": 209
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 6,
+        "label": {
+          "en": "Remote Control Permission",
+          "ja": "遠隔操作許可"
+        },
+        "inputType": "radio",
+        "default": "有効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "adminlink",
+          "advanced",
+          "remote_control"
+        ],
+        "item": {
+          "en": null,
+          "ja": "遠隔操作許可"
+        },
+        "type": "string",
+        "default": "enable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.adminlink.advanced.config_file_upload",
+      "sourceRows": {
+        "ja": 210,
+        "en": 211
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 7,
+        "label": {
+          "en": "Config File Upload Permission",
+          "ja": "設定ファイルアップロード許可"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "adminlink",
+          "advanced",
+          "config_file_upload"
+        ],
+        "item": {
+          "en": null,
+          "ja": "設定ファイルアップロード許可"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.adminlink.advanced.logfile_upload",
+      "sourceRows": {
+        "ja": 212,
+        "en": 213
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 8,
+        "label": {
+          "en": "Log File Upload Permission",
+          "ja": "ログファイルアップロード許可"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "adminlink",
+          "advanced",
+          "logfile_upload"
+        ],
+        "item": {
+          "en": null,
+          "ja": "ログファイルアップロード許可"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.adminlink.advanced.client_file_upload",
+      "sourceRows": {
+        "ja": 214,
+        "en": 215
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 9,
+        "label": {
+          "en": "Client File Upload Permission",
+          "ja": "接続クライアントファイルアップロード許可"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "adminlink",
+          "advanced",
+          "client_file_upload"
+        ],
+        "item": {
+          "en": null,
+          "ja": "接続クライアントファイルアップロード許可"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.adminlink.advanced.autoupload_interval",
+      "sourceRows": {
+        "ja": 216,
+        "en": 217
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 10,
+        "label": {
+          "en": "Auto Upload Intermal",
+          "ja": "接続クライアントファイル自動アップロード間隔"
+        },
+        "inputType": "dropdown",
+        "default": "6時間",
+        "range": "1時間/3時間/6時間/なし",
+        "lsb": null,
+        "required": false,
+        "validation": "なし",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "adminlink",
+          "advanced",
+          "autoupload_interval"
+        ],
+        "item": {
+          "en": null,
+          "ja": "接続クライアントファイル自動アップロード間隔"
+        },
+        "type": "string",
+        "default": "6h",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "1h",
+          "3h",
+          "6h",
+          "none"
+        ],
+        "enumName": [
+          "1時間",
+          "3時間",
+          "6時間",
+          "なし"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "ui:row218",
+      "sourceRows": {
+        "ja": 218,
+        "en": 219
+      },
+      "ui": {
+        "screen": {
+          "en": "Update Firmware",
+          "ja": "ファームウェア更新"
+        },
+        "no": 1,
+        "label": {
+          "en": "Update firmware from",
+          "ja": "ファームウェアデータ参照機器"
+        },
+        "inputType": "radio",
+        "default": "PC上のファイル",
+        "range": "*1",
+        "lsb": null,
+        "required": true,
+        "validation": "なし",
+        "comment": {
+          "en": "*1: a file on your PC|a file on the attached USB device",
+          "ja": "*1：PC上のファイル|USBデバイス上のファイル"
+        }
+      },
+      "json": null
+    },
+    {
+      "id": "toolbox.fw_update.update_fw.auto_update",
+      "sourceRows": {
+        "ja": 220,
+        "en": 221
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 2,
+        "label": {
+          "en": "Firmware Automatic Update",
+          "ja": "ファームウェアの自動更新"
+        },
+        "inputType": "radio",
+        "default": "無効",
+        "range": "有効/無効",
+        "lsb": null,
+        "required": true,
+        "validation": "無し",
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "update_fw",
+          "auto_update"
+        ],
+        "item": {
+          "en": null,
+          "ja": "ファームウェアの自動更新"
+        },
+        "type": "string",
+        "default": "disable",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "enable",
+          "disable"
+        ],
+        "enumName": [
+          "有効",
+          "無効"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.update_fw.update_time",
+      "sourceRows": {
+        "ja": 222,
+        "en": 223
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 3,
+        "label": {
+          "en": "Update time",
+          "ja": "更新時刻"
+        },
+        "inputType": "dropdown",
+        "default": "自動",
+        "range": "*2",
+        "lsb": null,
+        "required": true,
+        "validation": "無し",
+        "comment": {
+          "en": "*2：Auto/00:00/01:00/02:00/03:00/04:00/05:00/06:00/07:00/08:00/09:00/10:00/11:00/12:00/13:00/14:00/15:00/16:00/17:00/18:00/19:00/20:00/21:00/22:00/23:00",
+          "ja": "*2：自動/00:00/01:00/02:00/03:00/04:00/05:00/06:00/07:00/08:00/09:00/10:00/11:00/12:00/13:00/14:00/15:00/16:00/17:00/18:00/19:00/20:00/21:00/22:00/23:00"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "update_fw",
+          "update_time"
+        ],
+        "item": {
+          "en": null,
+          "ja": "更新時刻"
+        },
+        "type": "string",
+        "default": 3,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "enumName": [
+          "00",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "\t※ファームウェア更新中は通信ができません。 ※ファームウェア更新中に本体の電源を切らないでください。 ※更新時刻は再起動スケジュールの再起動時刻と重ならないようにして下さい"
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.update_fw.auto",
+      "sourceRows": {
+        "ja": 224,
+        "en": 225
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": null,
+        "label": {
+          "en": null,
+          "ja": null
+        },
+        "inputType": null,
+        "default": null,
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": null,
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "update_fw",
+          "auto"
+        ],
+        "item": {
+          "en": null,
+          "ja": "更新時刻の自動設定"
+        },
+        "type": "boolean",
+        "default": "ture",
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": false
+      }
+    },
+    {
+      "id": "toolbox.fw_update.update_fw.weekday",
+      "sourceRows": {
+        "ja": 226,
+        "en": 227
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "weekday",
+          "ja": "曜日"
+        },
+        "inputType": null,
+        "default": null,
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": null,
+        "comment": {
+          "en": null,
+          "ja": null
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "update_fw",
+          "weekday"
+        ],
+        "item": {
+          "en": null,
+          "ja": "曜日"
+        },
+        "type": "string",
+        "default": 1,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "enumName": [
+          "月曜日",
+          "火曜日",
+          "水曜日",
+          "木曜日",
+          "金曜日",
+          "土曜日",
+          "日曜日"
+        ],
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": null
+        },
+        "readOnly": true
+      }
+    },
+    {
+      "id": "toolbox.fw_update.update_fw.target_time",
+      "sourceRows": {
+        "ja": 228,
+        "en": 229
+      },
+      "ui": {
+        "screen": {
+          "en": null,
+          "ja": null
+        },
+        "no": 4,
+        "label": {
+          "en": "target time",
+          "ja": "更新実施時刻"
+        },
+        "inputType": null,
+        "default": null,
+        "range": null,
+        "lsb": null,
+        "required": false,
+        "validation": null,
+        "comment": {
+          "en": "When a certain time is selected in |Update Time|, the selected time is displayed.\nWhen Auto is selected for |Update Time|, the time will be displayed randomly between 3:00 and 6:00.",
+          "ja": "「更新時刻」にて時刻が選択されたとき、選択した時刻を表示する\n「更新時刻」にて自動が選択されたとき、時刻を3:00～6:00の間でランダムに表示する。"
+        }
+      },
+      "json": {
+        "path": [
+          "toolbox",
+          "fw_update",
+          "update_fw",
+          "target_time"
+        ],
+        "item": {
+          "en": null,
+          "ja": "更新実施時刻"
+        },
+        "type": "string",
+        "default": 0.125,
+        "minimum": null,
+        "maximum": null,
+        "required": false,
+        "enum": null,
+        "enumName": null,
+        "format": null,
+        "pattern": null,
+        "description": {
+          "en": null,
+          "ja": "アップデートが実行される時刻を表示しています。分は自動で設定されます。"
+        },
+        "readOnly": true
+      }
+    }
+  ]
+}

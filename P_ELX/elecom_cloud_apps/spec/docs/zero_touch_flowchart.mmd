@@ -1,0 +1,55 @@
+flowchart TD
+    START([Device power ON])
+    START --> REG_EXISTS{Does Registry\ncode exists?}
+
+    REG_EXISTS -- "Regist code exist" --> NORMAL_STARTUP
+    REG_EXISTS -- "NO registry code exists" --> NORMAL_MODE_ENTRY
+
+    NORMAL_STARTUP[Normal startup flow\nMust be able to synchronize time]
+    NORMAL_STARTUP -- "Time Synced" --> RETRY_CHECK((Retry Check))
+    RETRY_CHECK --> CHECK_SETTINGS
+
+    CHECK_SETTINGS{Check if settings\nhave been changed\nfrom factory defaults}
+    CHECK_SETTINGS -- "No Change" --> DEV_REG_API[Device Registration API]
+    CHECK_SETTINGS -- "Changed" --> NORMAL_MODE_ENTRY
+
+    DEV_REG_API --> REG_STATUS{Device Registration\nreturn Status}
+    REG_STATUS -- "Response = 201" --> TMP_REG{Does tmp_reg_expiry\nincluded?}
+    REG_STATUS -- "Response != 201" --> NORMAL_MODE_ENTRY
+    REG_STATUS -- "Communication error" --> RETRY_CHECK
+
+    TMP_REG -- "tmp_reg_expiry included" --> ZERO_TOUCH_MODE_ENTRY((ZERO_TOUCH_MODE_ENTRY))
+    TMP_REG -- "Not included" --> STORE_DEVICE_ID[Device ID shall be stored\nin non-volatile memory]
+    STORE_DEVICE_ID --> NORMAL_MODE_ENTRY
+
+    NORMAL_MODE_ENTRY((NORMAL_MODE_ENTRY)) --> CHECK_REG_STATUS
+
+    CHECK_REG_STATUS{Check the device\nregistration status}
+    CHECK_REG_STATUS -- "Registered" --> START_PERIODIC[Start periodical process.\nStart remote control reception.]
+    CHECK_REG_STATUS -- "Not Registered" --> FINAL_LOOP((●))
+    START_PERIODIC --> FINAL_LOOP((●))
+    FINAL_LOOP --> END_FUNC([End Function])
+
+    ZERO_TOUCH_MODE_ENTRY --> REMOTE_OP[Start of Remote\nOperation Acceptance]
+    REMOTE_OP --> WAIT_FOR_RECEIVE((WAIT_FOR_RECEIVE))
+    WAIT_FOR_RECEIVE --> RECEIVE_REMOTE{Receive Remote ID?}
+
+    RECEIVE_REMOTE -- "Not Received" --> SETTING_CHANGED{Does Setting\nChanged?}
+    RECEIVE_REMOTE -- "Received" --> HANDLE_REMOTE{Handle Remote ID}
+
+    SETTING_CHANGED -- "No Change" --> PROVISIONAL{Is in\nprovisional period?}
+    SETTING_CHANGED -- "Changed" --> NORMAL_MODE_ENTRY
+
+    HANDLE_REMOTE -- "5070 or 5080" --> RMT_CTRL[Rmt Ctrl File Down Flow]
+    HANDLE_REMOTE -- "NOT 5070 or 5080" --> WAIT_FOR_RECEIVE
+
+    RMT_CTRL -- "Success" --> STORE_REG_INFO[Stores registration info\nin non-volatile memory]
+    RMT_CTRL -- "Failure" --> WAIT_FOR_RECEIVE
+
+    STORE_REG_INFO --> REBOOT[Reboot device]
+
+    PROVISIONAL -- "Within a period of time" --> COMM_STATUS{Communication Status}
+    PROVISIONAL -- "Outside" --> NORMAL_MODE_ENTRY
+
+    COMM_STATUS -- "Connected" --> WAIT_FOR_RECEIVE
+    COMM_STATUS -- "Disconnect" --> ZERO_TOUCH_MODE_ENTRY
