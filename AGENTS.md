@@ -49,6 +49,8 @@ ls P_ELX/elecom_cloud_apps/spec/skill/2_5_*
 - **SPEC / SKILL 撰寫慣例與業界依據**：[`docs/INDUSTRY_PRACTICES_2026.md`](docs/INDUSTRY_PRACTICES_2026.md)
 - **學習路線（first-time）**：[`docs/READING_ORDER.md`](docs/READING_ORDER.md)
 - **AdminLink package 完整 spec**：`P_ELX/elecom_cloud_apps/spec/`（v2 為現行）
+- **Cloud UI spec / meta-schema**：`P_ELX/elecom_cloud_apps/config_manager/`
+- **GPL release 工具**：[`tools/gpl-toolkit/`](tools/gpl-toolkit/)（從 `~/ai_test` 以 `git subtree` 匯入）
 - **Source code 真相來源**：`$ELX_SRC/`（即 `~/wab-be187/`）
 
 需要某 package 的細節 → 進該 package 子目錄看其 `spec/` 與當地 AGENTS.md（如有）。

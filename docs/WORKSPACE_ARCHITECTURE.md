@@ -386,6 +386,21 @@ If `$ELX_AI` is not set, ask the user for the ELX_with_AI checkout path.
 
 ---
 
+### 4.3 Schema artifact 的歸屬（如 config_manager）
+
+並非所有「.json / schema 類檔案」都屬於 `spec/` 子樹。判斷準則：
+
+| 來源 | 放哪 | 範例 |
+|------|------|------|
+| **人類規格書衍生**（SPEC.xlsx → markdown） | `spec/` 子樹 | `spec/v2/SPEC_v2_AGT*.md`、`spec/skill/2_*_*_SKILL.md` |
+| **source code 工具產出**（generator output） | package 同名子目錄 | `config_manager/*.spec.json`、`config_manager/ui-spec.schema.json` |
+
+理由：spec/ 是「客戶規格的真相層」，由人讀寫；generator output 是「source 端工具的產物」，由機器產生並由 source 端編譯使用。把兩者混進 spec/ 會讓 AI 在「修改一個 cloud UI 欄位」時誤以為要改客戶規格書。
+
+對應 source 端：`$ELX_SRC/P_ELX/elecom_cloud_apps/config_manager/{dbox_to_json,json_to_dbox}/` 是 dbox ↔ JSON 雙向轉換器，那些 `*.spec.json` 是它的輸入。
+
+---
+
 ## 5. 演進路線
 
 ### 第一階段（現在 → 1 個月）：Pattern C（workspace overlay）
@@ -414,6 +429,22 @@ ln -s knowledge/CLAUDE.md CLAUDE.md
 
 ELX_with_AI 加 CI，自動把該 package 的 SKILL/SPEC 同步到對應 source repo 的 `.ai/` 目錄。  
 此時 source repo 不依賴 ELX_AI 路徑也能用，達到 platform 與 product 解耦。
+
+---
+
+### 5.x 遷入既有獨立 repo（如 gpl-toolkit）
+
+若某工具原本是獨立 git repo（例：`~/ai_test` 之於 gpl-toolkit），優先用 `git subtree add` 保留 commit 歷史：
+
+```bash
+cd ~/ELX_with_AI
+git subtree add --prefix=tools/<name> <path-or-url> <branch>
+# 例：git subtree add --prefix=tools/gpl-toolkit /home/chris/ai_test main
+```
+
+**為什麼不用 submodule**：見 §6 附錄；新人易踩坑、與 AI 工具整合不直觀。  
+**為什麼不只是複製檔案**：失去歷史、未來雙向同步無基準。  
+**遷入後**：原獨立 repo 設為 archive 或刪除，避免雙頭來源。要把改動同步回原 repo 用 `git subtree push --prefix=tools/<name> <remote> <branch>`。
 
 ---
 
