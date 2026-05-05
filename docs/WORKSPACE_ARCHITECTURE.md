@@ -388,16 +388,19 @@ If `$ELX_AI` is not set, ask the user for the ELX_with_AI checkout path.
 
 ### 4.3 Schema artifact 的歸屬（如 config_manager）
 
-並非所有「.json / schema 類檔案」都屬於 `spec/` 子樹。判斷準則：
+並非所有「.json / schema 類檔案」都屬於 `spec/` 子樹。同樣源自 SPEC.xlsx 的東西，**依「給誰讀」分流**：
 
-| 來源 | 放哪 | 範例 |
+| 角色 | 放哪 | 範例 |
 |------|------|------|
-| **人類規格書衍生**（SPEC.xlsx → markdown） | `spec/` 子樹 | `spec/v2/SPEC_v2_AGT*.md`、`spec/skill/2_*_*_SKILL.md` |
-| **source code 工具產出**（generator output） | package 同名子目錄 | `config_manager/*.spec.json`、`config_manager/ui-spec.schema.json` |
+| **規格書內容**（人讀的描述、acceptance criteria） | `spec/` 子樹 | `spec/v2/SPEC_v2_AGT*.md`、`spec/skill/2_*_*_SKILL.md` |
+| **規格書衍生的機讀契約**（驅動 source 實作、AI 解析） | package 同名子目錄 | `config_manager/*.spec.json`、`config_manager/ui-spec.schema.json` |
 
-理由：spec/ 是「客戶規格的真相層」，由人讀寫；generator output 是「source 端工具的產物」，由機器產生並由 source 端編譯使用。把兩者混進 spec/ 會讓 AI 在「修改一個 cloud UI 欄位」時誤以為要改客戶規格書。
+關鍵：機讀契約是 **source code 必須遵循**的合約，不是「source 工具產出物」。資料流是
+`Excel → spec.json → device source code 實作`——對 Excel 是 output，對 source code 是 **input contract**。
 
-對應 source 端：`$ELX_SRC/P_ELX/elecom_cloud_apps/config_manager/{dbox_to_json,json_to_dbox}/` 是 dbox ↔ JSON 雙向轉換器，那些 `*.spec.json` 是它的輸入。
+對應 source 端：`$ELX_SRC/P_ELX/elecom_cloud_apps/config_manager/{dbox_to_json,json_to_dbox}/` 必須讀此處 spec.json 並照其 `json.path` / `json.type` / `json.enum` 實作雙向轉換。spec 與 source 任一側改動，另一側必須跟改（檢查清單見 [P_ELX/elecom_cloud_apps/config_manager/CLAUDE.md](../P_ELX/elecom_cloud_apps/config_manager/CLAUDE.md) §How source code uses this spec）。
+
+把契約混進 `spec/` 會讓 AI 在「修改一個 cloud UI 欄位」時誤以為只要改規格書 markdown；實際上要改 spec.json + 兩側 source。
 
 ---
 
