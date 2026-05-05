@@ -1,0 +1,24 @@
+# GPL release 工作樹（每次 build 重新產生）
+wab-*-gpl/
+wab-*-gpl.src/
+wab-*-gpl.build/
+
+# Release 產出
+*.tar.gz
+*.tar.bz2
+
+# Claude Code 個人設定
+.claude/settings.local.json
+.claude/settings.json.api
+.claude/settings.json.pro
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*~
