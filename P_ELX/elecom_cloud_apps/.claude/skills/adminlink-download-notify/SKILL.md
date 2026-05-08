@@ -1,5 +1,5 @@
 ---
-name: file-download-completion-notification-api
+name: adminlink-download-notify
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the File Download Completion Notification API
@@ -259,5 +259,5 @@ File download targets are added on the NextGiga side.
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Prerequisite (required) | 2.8 URL Acquisition for Download | `2_8_url_acquisition_file_download_api_SKILL.md` | Must call 2.8 first to get `download_url` |
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered |
+| Prerequisite (required) | 2.8 URL Acquisition for Download | `/adminlink-download-url` | Must call 2.8 first to get `download_url` |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |

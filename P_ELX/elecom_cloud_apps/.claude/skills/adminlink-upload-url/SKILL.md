@@ -1,5 +1,5 @@
 ---
-name: url-acquisition-api-file-upload
+name: adminlink-upload-url
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the URL Acquisition API for File Upload
@@ -257,5 +257,5 @@ Ensure all required field values are non-empty when sending requests.
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Next (required) | 2.7 File Upload Completion | `2_7_file_upload_completion_notification_api_SKILL.md` | After S3 PUT, call 2.7 with `upload_id` to finalize |
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered |
+| Next (required) | 2.7 File Upload Completion | `/adminlink-upload-notify` | After S3 PUT, call 2.7 with `upload_id` to finalize |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |

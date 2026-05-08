@@ -1,5 +1,5 @@
 ---
-name: device-registration-api
+name: adminlink-register-device
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the Device Registration API (POST /v1/devices).
@@ -328,6 +328,6 @@ Duplicate serial numbers are **not checked** — the DB allows duplicate serial 
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Next | 2.3 Auth Info Acquisition | `2_3_auth_info_acquisition_api_SKILL.md` | After registration, device calls 2.3 to get IoT Core credentials |
-| Next | 2.4 Registration Confirmation | `2_4_device_registration_confirmation_api_SKILL.md` | Device confirms registration status (skip if provisional) |
-| Reverse | 2.10 Device Unregistration | `2_10_device_unregistration_api_SKILL.md` | Reverse operation — removes a registered device |
+| Next | 2.3 Auth Info Acquisition | `/adminlink-auth-info` | After registration, device calls 2.3 to get IoT Core credentials |
+| Next | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Device confirms registration status (skip if provisional) |
+| Reverse | 2.10 Device Unregistration | `/adminlink-unregister-device` | Reverse operation — removes a registered device |

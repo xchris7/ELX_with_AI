@@ -1,5 +1,5 @@
 ---
-name: device-unregistration-api
+name: adminlink-unregister-device
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the Device Unregistration API
@@ -34,6 +34,7 @@ Use this SKILL when the user asks to:
 
 > `{dev_id}` in the URI must be replaced with the actual Device ID of the device to unregister.
 > This API shares the same URI as the Device Registration Confirmation API (2.4) — distinguished by HTTP method (`DELETE` vs `GET`).
+> **Always explicitly set the HTTP method to `DELETE`.** Using `GET` by mistake will query the device record (API 2.4) rather than delete it. Using any other method returns `405 Method Not Allowed`. No client-side safeguard exists — correct method must be set explicitly in every call.
 
 ---
 
@@ -122,6 +123,17 @@ Empty JSON is returned. ({})
 ---
 
 ### Step 4 — Diagnose Errors
+
+**Identify the error category first, then consult the detailed table below.**
+
+| Status | Category | First Action |
+|--------|----------|--------------|
+| `400` | Input / format error | Check `error_id` — missing or malformed `dev_id` or MAC address |
+| `401` | Auth / registration mismatch | Verify `dev_id` and MAC address match a registered device |
+| `405` | Wrong HTTP method | Confirm method is `DELETE` (not `GET` or `POST`) |
+| `500` | Server-side cleanup failure | Use `error_id` to identify which of the 5 deletion steps failed |
+
+---
 
 #### HTTP 400 errors
 
@@ -226,5 +238,5 @@ No fields to parse — 200 status alone confirms successful unregistration.
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Reverse of | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Reverse operation — removes what 2.2 registered |
-| Same URI | 2.4 Registration Confirmation | `2_4_device_registration_confirmation_api_SKILL.md` | Same URI `/v1/devices/{dev_id}` — distinguished by HTTP method (DELETE vs GET) |
+| Reverse of | 2.2 Device Registration | `/adminlink-register-device` | Reverse operation — removes what 2.2 registered |
+| Same URI | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Same URI `/v1/devices/{dev_id}` — distinguished by HTTP method (DELETE vs GET) |

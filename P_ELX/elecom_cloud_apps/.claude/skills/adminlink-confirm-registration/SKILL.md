@@ -1,5 +1,5 @@
 ---
-name: device-registration-confirmation-api
+name: adminlink-confirm-registration
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the Device Registration Confirmation API
@@ -280,6 +280,6 @@ If KC revision sticky notes conflict with the main table → **KC note takes pre
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered first |
-| Prerequisite | 2.3 Auth Info Acquisition | `2_3_auth_info_acquisition_api_SKILL.md` | Auth info acquired before confirmation |
-| Same URI | 2.10 Device Unregistration | `2_10_device_unregistration_api_SKILL.md` | Same URI `/v1/devices/{dev_id}` — distinguished by HTTP method (GET vs DELETE) |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered first |
+| Prerequisite | 2.3 Auth Info Acquisition | `/adminlink-auth-info` | Auth info acquired before confirmation |
+| Same URI | 2.10 Device Unregistration | `/adminlink-unregister-device` | Same URI `/v1/devices/{dev_id}` — distinguished by HTTP method (GET vs DELETE) |

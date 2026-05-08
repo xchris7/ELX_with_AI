@@ -1,5 +1,5 @@
 ---
-name: file-upload-completion-notification-api
+name: adminlink-upload-notify
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the File Upload Completion Notification API
@@ -313,5 +313,5 @@ Mismatch → 4012
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Prerequisite (required) | 2.6 URL Acquisition for Upload | `2_6_url_acquisition_file_upload_api_SKILL.md` | Must call 2.6 first to get `upload_id` and pre-signed URL |
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered |
+| Prerequisite (required) | 2.6 URL Acquisition for Upload | `/adminlink-upload-url` | Must call 2.6 first to get `upload_id` and pre-signed URL |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |

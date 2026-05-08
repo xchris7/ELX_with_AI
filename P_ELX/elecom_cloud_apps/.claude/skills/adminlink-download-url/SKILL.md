@@ -1,5 +1,5 @@
 ---
-name: url-acquisition-api-file-download
+name: adminlink-download-url
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the URL Acquisition API for File Download
@@ -289,5 +289,5 @@ Mismatch → 4012
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Next (required) | 2.9 File Download Completion | `2_9_file_download_completion_notification_api_SKILL.md` | After S3 GET, call 2.9 with `download_id` to trigger cleanup |
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered |
+| Next (required) | 2.9 File Download Completion | `/adminlink-download-notify` | After S3 GET, call 2.9 with `download_id` to trigger cleanup |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |

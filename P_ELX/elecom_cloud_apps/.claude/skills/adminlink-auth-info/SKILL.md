@@ -1,5 +1,5 @@
 ---
-name: auth-info-acquisition-api
+name: adminlink-auth-info
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the Authentication Information Acquisition API
@@ -291,6 +291,6 @@ Use the returned credentials in this order:
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered before calling this API |
-| Next | 2.4 Registration Confirmation | `2_4_device_registration_confirmation_api_SKILL.md` | Confirm registration and get permission flags |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered before calling this API |
+| Next | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Confirm registration and get permission flags |
 | Uses credentials for | MQTT/IoT Core Connection | — | Returned certs and endpoints used for MQTT messaging |

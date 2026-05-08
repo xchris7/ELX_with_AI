@@ -6,7 +6,7 @@ AdminLink cloud agent 的 AI 知識層。對應 source code 在 `$ELX_SRC/P_ELX/
 
 ```bash
 # 修改前必讀對應 SKILL（API 2.X）
-ls spec/skill/2_*_SKILL.md
+ls .claude/skills/
 
 # 找完整需求（v2 為現行）
 ls spec/v2/SPEC_v2_AGT*.md
@@ -18,8 +18,8 @@ ls $ELX_SRC/P_ELX/elecom_cloud_apps/{admlink,libadmlink,config_manager/{dbox_to_
 ## Boundaries
 
 - **不要**改 `spec/archive/`——v1 / SPEC.xlsx 衍生品，唯讀。
-- **不要**自編 API 行為——所有 API 細節以 `spec/skill/2_<N>_*_SKILL.md` 為唯一真相。
-- **改 `admlink/admlink_socket.c` 之前**：先讀 `spec/skill/` 內所有提及 `BIO_*` 的 SKILL，並理解 BIO 所有權移交陷阱（見下方反直覺第 2 條）。
+- **不要**自編 API 行為——所有 API 細節以 `.claude/skills/<skill-name>/SKILL.md` 為唯一真相。
+- **改 `admlink/admlink_socket.c` 之前**：先讀 `.claude/skills/` 內所有提及 `BIO_*` 的 SKILL，並理解 BIO 所有權移交陷阱（見下方反直覺第 2 條）。
 - **新增 SKILL 檔**：必對應 SPEC.xlsx 已定義的 API。憑空造的「想像 API」不收。
 
 ## Counterintuitive: AdminLink 領域陷阱
@@ -67,19 +67,33 @@ Disabled ──(user enable)──> Unregistered
 
 ## SKILL 索引
 
-| SKILL | API | 用途 |
-|-------|-----|------|
-| `2_2_device_registration_api_SKILL.md` | `POST /v1/devices` | 裝置註冊（手動 / 自動兩模式） |
-| `2_3_auth_info_acquisition_api_SKILL.md` | Auth info 取得 | 取認證資訊 |
-| `2_4_device_registration_confirmation_api_SKILL.md` | 註冊確認 | 確認註冊狀態 |
-| `2_5_software_update_acquisition_api_SKILL.md` | 軟體更新查詢 | OTA 觸發 |
-| `2_6_url_acquisition_file_upload_api_SKILL.md` | Upload URL 取得 | 取上傳 pre-signed URL（注意 key 名為 `Success. upload_url`，含空白） |
-| `2_7_file_upload_completion_notification_api_SKILL.md` | 上傳完成通知 | 配對 2.6 |
-| `2_8_url_acquisition_file_download_api_SKILL.md` | Download URL 取得 | 取下載 URL |
-| `2_9_file_download_completion_notification_api_SKILL.md` | 下載完成通知 | 配對 2.8 |
-| `2_10_device_unregistration_api_SKILL.md` | `DELETE /v1/devices` | 解除註冊 |
+| Slash Command | API | 用途 |
+|---------------|-----|------|
+| `/adminlink-register-device` | 2.2 `POST /v1/devices` | 裝置註冊（手動 / 自動兩模式） |
+| `/adminlink-auth-info` | 2.3 Auth info 取得 | 取認證資訊 |
+| `/adminlink-confirm-registration` | 2.4 註冊確認 | 確認註冊狀態 |
+| `/adminlink-software-update` | 2.5 軟體更新查詢 | OTA 觸發 |
+| `/adminlink-upload-url` | 2.6 Upload URL 取得 | 取上傳 pre-signed URL（注意 key 名為 `Success. upload_url`，含空白） |
+| `/adminlink-upload-notify` | 2.7 上傳完成通知 | 配對 2.6 |
+| `/adminlink-download-url` | 2.8 Download URL 取得 | 取下載 URL |
+| `/adminlink-download-notify` | 2.9 下載完成通知 | 配對 2.8 |
+| `/adminlink-unregister-device` | 2.10 `DELETE /v1/devices` | 解除註冊 |
 
 API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.6 ↔ 2.7` 與 `2.8 ↔ 2.9` 各自配對。
+
+## 邏輯驗證流程（AI 用）
+
+懷疑某 API 邏輯有問題，或需要驗證實作是否符合規格時，依序：
+
+1. **讀對應 SKILL**：`.claude/skills/<skill-name>/SKILL.md`（或直接用上方 slash command）（規格真相、trigger conditions、error table）
+2. **讀 source 實作**：`$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/admlink_socket.c`（API 呼叫邏輯）
+3. **對照狀態機**：`spec/v2/SPEC_v2_AGT2_Agent.md` §State Machine（狀態轉換是否正確）
+4. **若涉及 config payload**：讀 `config_manager/CLAUDE.md` §Field-level mapping rules（欄位對應是否正確）
+
+**驗證結果輸出格式**：
+- ✅ 符合規格：引用 SKILL 的對應段落
+- ❌ 不符合：列出「SKILL 規格說 X，source 實作是 Y」，不要自行推測正確做法
+- ⚠️ 無法確認：說明缺少哪個 context（SKILL？source？SPEC v2？）
 
 ## 子套件
 
@@ -90,7 +104,7 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 ## Domain Knowledge（深入）
 
 - 完整需求：`spec/v2/SPEC_v2_AGT{1..4}_*.md`（4 大 part）
-- API 細節：`spec/skill/2_*_*_SKILL.md`（含 trigger conditions、error tables）
+- API 細節（slash commands）：`.claude/skills/<skill-name>/SKILL.md`（含 trigger conditions、error tables）
 - JSON 共通格式：`spec/docs/JSON_Common_Specifications_EN.md`
 - Zero-touch flowchart：`spec/docs/zero_touch_flowchart.mmd`
-- 截圖佐證：`spec/skill/2.X.<name>/*.png`（各 SKILL 對應的原 SPEC.xlsx 截圖）
+- 截圖佐證：`spec/skill/2.<N>.<name>/*.png`（各 SKILL 對應的原 SPEC.xlsx 截圖，保留在 spec/skill/）

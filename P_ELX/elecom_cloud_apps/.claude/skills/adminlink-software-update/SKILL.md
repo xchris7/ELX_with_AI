@@ -1,5 +1,5 @@
 ---
-name: software-update-acquisition-api
+name: adminlink-software-update
 description: >
   Use this SKILL whenever the user needs to call, test, debug, validate, or
   generate code for the Software Update Acquisition API
@@ -217,6 +217,6 @@ If KC sticky notes conflict with the main table content → **KC note takes prec
 
 | Order | SKILL | File | Relationship |
 |-------|-------|------|-------------|
-| Prerequisite | 2.2 Device Registration | `2_2_device_registration_api_SKILL.md` | Device must be registered |
-| Prerequisite | 2.4 Registration Confirmation | `2_4_device_registration_confirmation_api_SKILL.md` | Registration confirmed before polling software updates |
-| Related | 2.8 File Download | `2_8_url_acquisition_file_download_api_SKILL.md` | Download URLs from this API are used to download software updates |
+| Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |
+| Prerequisite | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Registration confirmed before polling software updates |
+| Related | 2.8 File Download | `/adminlink-download-url` | Download URLs from this API are used to download software updates |
