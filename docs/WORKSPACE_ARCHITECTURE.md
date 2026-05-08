@@ -129,13 +129,17 @@ Yocto / Buildroot / OpenWRT 生態系常見。
 ```markdown
 # P_ELX/elecom_cloud_apps/CLAUDE.md (in wab-be187)
 
-This package's specification and SKILL files are in:
+This package's specification and evidence files are in:
   $ELX_AI/P_ELX/elecom_cloud_apps/spec/
+
+Its AI-facing SKILL files are in:
+  $ELX_AI/P_ELX/elecom_cloud_apps/.claude/skills/
 
 If $ELX_AI is not set, ask the user for the path to ELX_with_AI checkout.
 Then load:
-  - spec/v2/SPEC_v2_AGT*.md (requirements)
-  - spec/skill/*.md (API skills)
+  - spec/current/SPEC_v2_AGT*.md (requirements)
+  - .claude/skills/*/SKILL.md (API skills)
+  - spec/source_evidence/**/*.png only when wording or screenshots need verification
 ```
 
 **為什麼業界偏好這種：**
@@ -370,8 +374,9 @@ Full specification and SKILL files are maintained in the ELX AI knowledge repo.
 Before modifying this package, load these files from `$ELX_AI`:
 
 - `$ELX_AI/P_ELX/elecom_cloud_apps/CLAUDE.md` — package-level rules
-- `$ELX_AI/P_ELX/elecom_cloud_apps/spec/v2/SPEC_v2_AGT2_Agent.md` — agent requirements
-- `$ELX_AI/P_ELX/elecom_cloud_apps/spec/skill/*.md` — API skill files
+- `$ELX_AI/P_ELX/elecom_cloud_apps/spec/current/SPEC_v2_AGT2_Agent.md` — agent requirements
+- `$ELX_AI/P_ELX/elecom_cloud_apps/.claude/skills/*/SKILL.md` — API skill files
+- `$ELX_AI/P_ELX/elecom_cloud_apps/spec/source_evidence/**/*.png` — original screenshot evidence when verification is needed
 
 If `$ELX_AI` is not set, ask the user for the ELX_with_AI checkout path.
 
@@ -392,7 +397,9 @@ If `$ELX_AI` is not set, ask the user for the ELX_with_AI checkout path.
 
 | 角色 | 放哪 | 範例 |
 |------|------|------|
-| **規格書內容**（人讀的描述、acceptance criteria） | `spec/` 子樹 | `spec/v2/SPEC_v2_AGT*.md`、`spec/skill/2_*_*_SKILL.md` |
+| **規格書內容**（人讀的描述、acceptance criteria） | `spec/current/` | `spec/current/SPEC_v2_AGT*.md` |
+| **AI-facing API SKILL**（依 source 對照整理） | `.claude/skills/` | `.claude/skills/<skill-name>/SKILL.md` |
+| **原始截圖證據**（原 SPEC.xlsx 對照、OCR 來源） | `spec/source_evidence/` | `spec/source_evidence/2.<N>.<name>/*.png` |
 | **規格書衍生的機讀契約**（驅動 source 實作、AI 解析） | package 同名子目錄 | `config_manager/*.spec.json`、`config_manager/ui-spec.schema.json` |
 
 關鍵：機讀契約是 **source code 必須遵循**的合約，不是「source 工具產出物」。資料流是

@@ -10,10 +10,10 @@
 
 ```bash
 # 修改前必讀對應 SKILL
-ls spec/skill/*_SKILL.md
+ls .claude/skills/
 
 # 找完整需求
-ls spec/v2/SPEC_*.md
+ls spec/current/SPEC_*.md
 
 # 對應的 source code
 ls $ELX_SRC/P_ELX/<package>/
@@ -22,7 +22,7 @@ ls $ELX_SRC/P_ELX/<package>/
 ## Boundaries
 
 - **不要**改 `spec/archive/`——歷史版本，唯讀。
-- **不要**自編行為——所有細節以 `spec/skill/` 為唯一真相。
+- **不要**自編行為——所有 API 細節以 `.claude/skills/<skill-name>/SKILL.md` 為唯一真相。
 - <!-- 填入此 package 專屬的 "改 X 之前必做 Y" 規則 -->
 
 ## Counterintuitive: <package> 領域陷阱
@@ -53,6 +53,7 @@ ls $ELX_SRC/P_ELX/<package>/
 
 ## Domain Knowledge（深入）
 
-- 完整需求：`spec/v2/SPEC_*.md`
-- API 細節：`spec/skill/*_SKILL.md`
+- 完整需求：`spec/current/SPEC_*.md`
+- API 細節：`.claude/skills/<skill-name>/SKILL.md`
+- 原始截圖證據：`spec/source_evidence/`
 - <!-- 其他補充文件 -->
