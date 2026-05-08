@@ -580,8 +580,9 @@ source/AGENTS.md（短，只放 build / 慣例 / pointer）
          │
          ▼
 ELX_with_AI/P_ELX/<package>/AGENTS.md（domain overview）
-    └── spec/v2/SPEC_v2_*.md         ← Agent 需要時才載入
-    └── spec/skill/*.md              ← 各 API 的 SKILL（按需載入）
+    └── spec/current/SPEC_v2_*.md    ← Agent 需要時才載入
+    └── .claude/skills/*/SKILL.md    ← 各 API 的 SKILL（按需載入）
+    └── spec/source_evidence/**/*.png ← 原始截圖證據（有疑義時再查）
 ```
 
 **ELX_with_AI 整個 repo 就是 HumanLayer 講的 `agent_docs/` 的放大版**——只是放在獨立 repo，跨產品共用。
@@ -620,8 +621,9 @@ Layer 3：knowledge 端 domain 概覽
     knowledge/ELX_with_AI/P_ELX/<pkg>/AGENTS.md
         ↓ 引用
 Layer 4：詳細 SPEC / SKILL（按需載入）
-    spec/v2/SPEC_*.md
-    spec/skill/*.md
+    spec/current/SPEC_*.md
+    .claude/skills/*/SKILL.md
+    spec/source_evidence/**/*.png
 ```
 
 **每一層只寫該層獨有、且不能繼承的內容。** 這是業界 2026 的共識做法。

@@ -8,8 +8,8 @@ AdminLink cloud agent 的 AI 知識層。對應 source code 在 `$ELX_SRC/P_ELX/
 # 修改前必讀對應 SKILL（API 2.X）
 ls .claude/skills/
 
-# 找完整需求（v2 為現行）
-ls spec/v2/SPEC_v2_AGT*.md
+# 找完整需求（current 為現行；檔名仍保留 v2）
+ls spec/current/SPEC_v2_AGT*.md
 
 # 對應的 source code
 ls $ELX_SRC/P_ELX/elecom_cloud_apps/{admlink,libadmlink,config_manager/{dbox_to_json,json_to_dbox}}/
@@ -63,7 +63,7 @@ Disabled ──(user enable)──> Unregistered
               └────────── factory reset ──────────┘
 ```
 
-`dic` = `dev_id_changed`。完整 state 轉換見 `spec/v2/SPEC_v2_AGT2_Agent.md`。
+`dic` = `dev_id_changed`。完整 state 轉換見 `spec/current/SPEC_v2_AGT2_Agent.md`。
 
 ## SKILL 索引
 
@@ -81,13 +81,47 @@ Disabled ──(user enable)──> Unregistered
 
 API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.6 ↔ 2.7` 與 `2.8 ↔ 2.9` 各自配對。
 
+## In-Package Search Protocol（先看這張表，再決定動作）
+
+問問題前先對照「問題類型 → 第一站」決策。第一站讀完通常就有答案；第二站才是 fallback grep source。
+
+| 問題類型範例 | 第一站 | 第二站 |
+|---|---|---|
+| 「act_id N 是什麼 / 何時觸發」 | [`spec/docs/EVENT_ID_INDEX.md`](spec/docs/EVENT_ID_INDEX.md) | `grep "\"act_id\":N"` in `wab-be187/.../admlink/*.c` |
+| 「Remote Operation ID（rcid）」 | [`spec/docs/EVENT_ID_INDEX.md`](spec/docs/EVENT_ID_INDEX.md) §2 | `admlink_msghdl.c` 的 `rc_hdl_tbl[]` / `rcid2namejp()` |
+| 「API X 規格 / error code」 | `.claude/skills/<skill-name>/SKILL.md` | `spec/current/SPEC_v2_AGT*.md` |
+| 「config 欄位 X 對應」 | [`config_manager/CLAUDE.md`](config_manager/CLAUDE.md) + `spec.json` | `config_manager/dbox_to_json/` source |
+| 「狀態機 / 註冊流程」 | `spec/current/SPEC_v2_AGT2_Agent.md` State Machine | `admlink_sm.c` |
+| 「JSON 共通格式」 | `spec/docs/JSON_Common_Specifications_EN.md` | — |
+| 「Zero-touch 流程」 | `spec/current/SPEC_v2_AGT4_ZeroTouch.md` + `spec/docs/zero_touch_flowchart.mmd` | — |
+| 「web 設定觸發 AdminLink 上傳」（跨 fcgibox）| `.claude/skills/<skill-name>/SKILL.md` | `wab-be187/P_ELX/fcgibox/modules/submit/elecom/` + `admlink_genmsg.c` |
+| 「系統事件觸發 AdminLink event」（跨 systemdaemon）| `EVENT_ID_INDEX.md` 看 trigger 條件 | `wab-be187/P_ELX/systemdaemon/` 找對應 hook |
+
+### Single-shot 搜尋慣用招式
+
+```bash
+# act_id / 常數值（限定 admlink/，不要遞迴整個 cloud_apps）
+grep -n "1120" wab-be187/P_ELX/elecom_cloud_apps/admlink/*.c
+
+# API 行為（先讀對應 SKILL，再對 source）
+cat P_ELX/elecom_cloud_apps/.claude/skills/adminlink-<name>/SKILL.md
+
+# 跨檔找函式定義（限定 admlink/）
+grep -rn "function_name" wab-be187/P_ELX/elecom_cloud_apps/admlink/
+
+# 追跨 package 觸發鏈：先在 admlink 找關鍵 token，再用 token 跨 package grep
+grep -rn "CLOUD_TMP_WARM_START_TOK" wab-be187/P_ELX/{elecom_cloud_apps,fcgibox,systemdaemon}/
+```
+
+**精神**：grep 之前先想「這應該歸屬哪份索引文件？」有索引就讀索引，沒有再 fallback。跨 package 觸發鏈追蹤必須**先有具體 token / 函式名**才允許跨 package grep。
+
 ## 邏輯驗證流程（AI 用）
 
 懷疑某 API 邏輯有問題，或需要驗證實作是否符合規格時，依序：
 
 1. **讀對應 SKILL**：`.claude/skills/<skill-name>/SKILL.md`（或直接用上方 slash command）（規格真相、trigger conditions、error table）
 2. **讀 source 實作**：`$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/admlink_socket.c`（API 呼叫邏輯）
-3. **對照狀態機**：`spec/v2/SPEC_v2_AGT2_Agent.md` §State Machine（狀態轉換是否正確）
+3. **對照狀態機**：`spec/current/SPEC_v2_AGT2_Agent.md` §State Machine（狀態轉換是否正確）
 4. **若涉及 config payload**：讀 `config_manager/CLAUDE.md` §Field-level mapping rules（欄位對應是否正確）
 
 **驗證結果輸出格式**：
@@ -103,8 +137,8 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 
 ## Domain Knowledge（深入）
 
-- 完整需求：`spec/v2/SPEC_v2_AGT{1..4}_*.md`（4 大 part）
+- 完整需求：`spec/current/SPEC_v2_AGT{1..4}_*.md`（4 大 part）
 - API 細節（slash commands）：`.claude/skills/<skill-name>/SKILL.md`（含 trigger conditions、error tables）
 - JSON 共通格式：`spec/docs/JSON_Common_Specifications_EN.md`
 - Zero-touch flowchart：`spec/docs/zero_touch_flowchart.mmd`
-- 截圖佐證：`spec/skill/2.<N>.<name>/*.png`（各 SKILL 對應的原 SPEC.xlsx 截圖，保留在 spec/skill/）
+- 截圖佐證：`spec/source_evidence/2.<N>.<name>/*.png`（各 SKILL 對應的原 SPEC.xlsx 截圖，保留在 spec/source_evidence/）

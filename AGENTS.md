@@ -9,7 +9,7 @@ ELX 韌體平台的 **AI 知識層**。**不是 source code repo**——映射 `
 ls $ELX_SRC/P_ELX/<package>/
 
 # 找此 repo 內某個 API 的 SKILL（例：API 2.5）
-ls P_ELX/elecom_cloud_apps/spec/skill/2_5_*
+ls P_ELX/elecom_cloud_apps/.claude/skills/adminlink-software-update/SKILL.md
 
 # 寫新 SKILL 檔的命名慣例：<chapter>_<id>_<snake_case_name>_SKILL.md
 # 例：3_1_wifi_config_api_SKILL.md
@@ -24,6 +24,8 @@ ls P_ELX/elecom_cloud_apps/spec/skill/2_5_*
 - **不要**新增 package 目錄，除非 `$ELX_SRC/P_ELX/<package>/` 真實存在。
 - **不要**把 SPEC 完整內容貼進 AGENTS.md / CLAUDE.md——按 [Progressive Disclosure](docs/INDUSTRY_PRACTICES_2026.md#88-progressive-disclosure-與-non-inferable-principle)，spec/ 才是詳細內容的家。
 - 修改 `docs/INDUSTRY_PRACTICES_2026.md` 第 8 節時，**先讀 [READING_ORDER.md](docs/READING_ORDER.md) 的 Stage 1+2**，避免違反業界 2026 共識。
+- **Do not** recursively grep the whole `wab-be187/` — narrow to a single P_ELX package first (see [`docs/SEARCH_PROTOCOL.md`](docs/SEARCH_PROTOCOL.md) for domain routing).
+- **Do not** read `wab-be72/` — different hardware target; only enter when the user explicitly asks.
 
 ## Counterintuitive: Read These Before Editing SPEC/SKILL
 
@@ -51,6 +53,7 @@ ls P_ELX/elecom_cloud_apps/spec/skill/2_5_*
 - **GPL release 工具**：[`tools/gpl-toolkit/`](tools/gpl-toolkit/)（從 `~/ai_test` 以 `git subtree` 匯入）
 - **Source code 真相來源**：`$ELX_SRC/`（即 `~/wab-be187/`，未來含 `~/wab-be72/`）
 - **新 package 模板**：[`docs/PACKAGE_AGENTS_TEMPLATE.md`](docs/PACKAGE_AGENTS_TEMPLATE.md)
+- **Search protocol**: [`docs/SEARCH_PROTOCOL.md`](docs/SEARCH_PROTOCOL.md) — domain routing table, cross-package search rules, single-shot grep recipes.
 
 ### Package 入口（Layer 3）
 
