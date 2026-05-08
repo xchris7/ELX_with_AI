@@ -1,10 +1,16 @@
+---
+name: gpl-report
+description: Analyze a cleaned GPL work tree and produce a structured compliance report covering licenses, binaries, GPL infection risk, compliance issues, internal modifications, and sensitive data. Use after /gpl-full or /gpl-quick has completed successfully.
+argument-hint: MODEL
+---
+
 # GPL Release Report
 
 在 gpl.sh 執行完成後，對清理後的 GPL work tree 進行全面分析，產出結構化報告。
 
-Usage: /gpl-report MODEL
+Usage: /report MODEL
 
-前提：`<GPL_DIR_NAME>/`（work tree）已由 `/gpl-full` 或 `/gpl-quick` 產生完畢。
+前提：`<GPL_DIR_NAME>/`（work tree）已由 `/full` 或 `/quick` 產生完畢。
 
 ---
 

@@ -1,9 +1,16 @@
+---
+name: gpl-batch
+description: Run full GPL release validation (build → report → extract → re-make) for multiple ELECOM AP models sequentially. Use when testing GPL compliance for EW-7786LBE and/or EW-7896LBE. Accepts optional model list; defaults to EW-7786LBE EW-7896LBE.
+argument-hint: "[MODEL...]"
+disable-model-invocation: true
+---
+
 # GPL Batch Test
 
 對多個機種依序執行完整 GPL release 驗證流程：build → report → extract → re-make。
 
-Usage: /gpl-batch
-Usage: /gpl-batch EW-7786LBE EW-7896LBE
+Usage: /batch
+Usage: /batch EW-7786LBE EW-7896LBE
 
 若未傳入 MODEL 清單，預設為 `EW-7786LBE EW-7896LBE`。
 
@@ -56,7 +63,7 @@ cd /home/chris/ai && ./gpl.sh <MODEL> --mode full --protect-shell-scripts
 
 分析目標為 gpl.sh 清理後的 work tree `<GPL_DIR_NAME>/`（非 .src 也非 .build）。
 
-依照 `/gpl-report` 的報告章節規範，對 work tree 執行完整分析並將報告寫入：
+依照 `/report` 的報告章節規範，對 work tree 執行完整分析並將報告寫入：
 
 ```text
 /home/chris/ai/<GPL_DIR_NAME>_GPL_RELEASE_REPORT.md

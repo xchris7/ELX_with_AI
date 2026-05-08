@@ -1,3 +1,10 @@
+---
+name: gpl-full
+description: Run complete GPL build and validation with .build snapshot creation from repo root. Use when starting a fresh GPL release verification for a hardware model. Defaults to EW-7786LBE if no model specified.
+argument-hint: MODEL
+disable-model-invocation: true
+---
+
 # GPL Full Build
 
 在 repo root 執行完整 GPL 驗證與 .build 快照建立。
@@ -8,7 +15,7 @@ cd /path/to/gcp
 ```
 
 若未傳入 MODEL，預設為 EW-7786LBE。
-Usage: /gpl-full EW-7786LBE
+Usage: /full EW-7786LBE
 
 注意：遵守 CLAUDE.md「Token 節費規則」— gpl.sh 與 make 用 `run_in_background` 執行，完成後只 `tail -20` 確認結果。
 
@@ -22,4 +29,4 @@ Usage: /gpl-full EW-7786LBE
 6. 驗證 uImage 與 FW image
 7. 儲存 .build 快照
 8. 執行 main_release() 清理流程
-9. 執行 /gpl-report MODEL 產出完整分析報告
+9. 執行 /report MODEL 產出完整分析報告

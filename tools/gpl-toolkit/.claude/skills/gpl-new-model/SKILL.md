@@ -1,8 +1,15 @@
+---
+name: gpl-new-model
+description: Onboard a new ELECOM AP hardware model for GPL release support. Analyzes source tree, modifies gpl.sh and CLAUDE.md, shows diff before executing any build. Use when adding GPL support for a model not yet in gpl.sh validate_model().
+argument-hint: MODEL
+disable-model-invocation: true
+---
+
 # GPL New Model Onboarding
 
 為新機種建立完整的 GPL release 支援。Claude 自主分析 source tree、修改 gpl.sh 與 CLAUDE.md，展示 diff 給使用者確認後再執行驗證。
 
-Usage: /gpl-new-model MODEL
+Usage: /new-model MODEL
 
 前提：`<GPL_DIR_NAME>.src/` 已放置於本目錄下。
 

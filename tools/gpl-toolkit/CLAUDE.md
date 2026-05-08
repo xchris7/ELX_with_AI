@@ -12,7 +12,7 @@ ELECOM 無線 AP 韌體 GPL 釋出工具組。詳細用法見此目錄下：
 
 - 來源樹路徑：`$ELX_SRC`（預設 `~/wab-be187`，由 root `AGENTS.md` 定義）
 - 預設機種：`$ELX_MODEL`（見 `~/elx-workspace/elx.env`，per `docs/WORKSPACE_ARCHITECTURE.md` §4.2）
-- slash commands 位於 [.claude/commands/](.claude/commands/)，需以本目錄為 cwd 才會被 Claude Code 自動載入
+- slash skills 位於 [.claude/skills/](.claude/skills/)（`/gpl-batch`、`/gpl-full`、`/gpl-quick`、`/gpl-release`、`/gpl-report`、`/gpl-new-model`），透過 nested auto-discovery 自動載入，不需切換 cwd
 
 ## Boundaries
 

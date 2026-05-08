@@ -1,3 +1,10 @@
+---
+name: gpl-release
+description: Run GPL release cleanup directly in an existing GPL source tree without rebuilding the work tree. Use when already inside a wab-*-gpl directory that still has .git. SOURCE_PATH is taken from current working directory.
+argument-hint: MODEL
+disable-model-invocation: true
+---
+
 # GPL Release Mode
 
 在既有 GPL source tree 根目錄直接執行 release 清理（不重建工作樹）。
@@ -7,7 +14,7 @@ cd /path/to/wab-be72-gpl
 /path/to/gcp/gpl.sh $ARGUMENTS
 ```
 
-Usage: /gpl-release EW-7786LBE
+Usage: /release EW-7786LBE
 
 注意：
 - 必須在仍保有 .git 的 GPL source tree 根目錄執行
