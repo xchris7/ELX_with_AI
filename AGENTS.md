@@ -48,9 +48,16 @@ ls P_ELX/elecom_cloud_apps/spec/skill/2_5_*
 
 - **SPEC / SKILL 撰寫慣例與業界依據**：[`docs/INDUSTRY_PRACTICES_2026.md`](docs/INDUSTRY_PRACTICES_2026.md)
 - **學習路線（first-time）**：[`docs/READING_ORDER.md`](docs/READING_ORDER.md)
-- **AdminLink package 完整 spec**：`P_ELX/elecom_cloud_apps/spec/`（v2 為現行）
-- **Cloud UI spec / meta-schema**：`P_ELX/elecom_cloud_apps/config_manager/`
 - **GPL release 工具**：[`tools/gpl-toolkit/`](tools/gpl-toolkit/)（從 `~/ai_test` 以 `git subtree` 匯入）
-- **Source code 真相來源**：`$ELX_SRC/`（即 `~/wab-be187/`）
+- **Source code 真相來源**：`$ELX_SRC/`（即 `~/wab-be187/`，未來含 `~/wab-be72/`）
+- **新 package 模板**：[`docs/PACKAGE_AGENTS_TEMPLATE.md`](docs/PACKAGE_AGENTS_TEMPLATE.md)
 
-需要某 package 的細節 → 進該 package 子目錄看其 `spec/` 與當地 AGENTS.md（如有）。
+### Package 入口（Layer 3）
+
+需要某 package 的細節 → **直接讀 `P_ELX/<package>/AGENTS.md`**（SKILL 索引、反直覺規則、狀態機均在此）。
+
+| Package | Source | 狀態 |
+|---------|--------|------|
+| `elecom_cloud_apps` | `$ELX_SRC/P_ELX/elecom_cloud_apps/` | ✅ SKILL 2.2–2.10 + SPEC v2 |
+
+新 source repo 加入時：在此表新增一列 + 建立 `P_ELX/<package>/AGENTS.md`（依模板）。
