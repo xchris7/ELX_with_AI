@@ -129,11 +129,14 @@ grep -rn "CLOUD_TMP_WARM_START_TOK" wab-be187/P_ELX/{elecom_cloud_apps,fcgibox,s
 - ❌ 不符合：列出「SKILL 規格說 X，source 實作是 Y」，不要自行推測正確做法
 - ⚠️ 無法確認：說明缺少哪個 context（SKILL？source？SPEC v2？）
 
-## 子套件
+## 目錄入口索引
 
-| 路徑 | 內容 |
-|------|------|
-| `config_manager/` | **device 端 cloud config 契約**（Excel `_export_*` 衍生的機讀 spec + meta-schema）。`$ELX_SRC/.../config_manager/{dbox_to_json,json_to_dbox}/` source code 必須遵循。資料流：Excel → spec.json → source code 實作。**改 cloud UI 欄位 = 改 Excel → re-export spec.json → 跟著改兩側 source**。詳見 [`config_manager/CLAUDE.md`](config_manager/CLAUDE.md) §How source code uses this spec。 |
+- `.claude/skills/` — API 2.2–2.10 的 SKILL 真相來源。第一站：對應 `.claude/skills/<skill-name>/SKILL.md`
+- `admlink/` — source 端 daemon 主體（註冊狀態機、API 呼叫、事件處理）。第一站：先讀本檔的 `SKILL 索引` / `In-Package Search Protocol`，再進 `$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/`
+- `libadmlink/` — source 端共用 library。第一站：先讀本檔，必要時再進 `$ELX_SRC/P_ELX/elecom_cloud_apps/libadmlink/`
+- `config_manager/` — **device 端 cloud config 契約**（Excel `_export_*` 衍生的機讀 spec + meta-schema）。第一站：[`config_manager/CLAUDE.md`](config_manager/CLAUDE.md)
+- `spec/` — 正式需求、索引文件、source evidence。第一站：`spec/current/`、`spec/docs/`
+- `test/` — source 端測試與驗證輔助目錄。第一站：先確認需求後再進 `$ELX_SRC/P_ELX/elecom_cloud_apps/test/`
 
 ## Domain Knowledge（深入）
 

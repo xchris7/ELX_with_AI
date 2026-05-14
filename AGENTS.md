@@ -59,8 +59,6 @@ ls P_ELX/elecom_cloud_apps/.claude/skills/adminlink-software-update/SKILL.md
 
 需要某 package 的細節 → **直接讀 `P_ELX/<package>/AGENTS.md`**（SKILL 索引、反直覺規則、狀態機均在此）。
 
-| Package | Source | 狀態 |
-|---------|--------|------|
-| `elecom_cloud_apps` | `$ELX_SRC/P_ELX/elecom_cloud_apps/` | ✅ SKILL 2.2–2.10 + SPEC v2 |
+- `elecom_cloud_apps` — source: `$ELX_SRC/P_ELX/elecom_cloud_apps/`；索引入口：`P_ELX/elecom_cloud_apps/AGENTS.md` → `config_manager/CLAUDE.md`；狀態：✅ SKILL 2.2–2.10 + SPEC v2
 
 新 source repo 加入時：在此表新增一列 + 建立 `P_ELX/<package>/AGENTS.md`（依模板）。
