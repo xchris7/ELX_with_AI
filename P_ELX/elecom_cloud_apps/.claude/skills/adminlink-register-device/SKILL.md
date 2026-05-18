@@ -331,3 +331,12 @@ Duplicate serial numbers are **not checked** — the DB allows duplicate serial 
 | Next | 2.3 Auth Info Acquisition | `/adminlink-auth-info` | After registration, device calls 2.3 to get IoT Core credentials |
 | Next | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Device confirms registration status (skip if provisional) |
 | Reverse | 2.10 Device Unregistration | `/adminlink-unregister-device` | Reverse operation — removes a registered device |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`03_device_registration_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/03_device_registration_flow.md) — Flow 3：按下註冊鈕後的裝置註冊流程
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

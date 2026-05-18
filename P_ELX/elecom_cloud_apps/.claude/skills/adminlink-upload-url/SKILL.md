@@ -259,3 +259,13 @@ Ensure all required field values are non-empty when sending requests.
 |-------|-------|------|-------------|
 | Next (required) | 2.7 File Upload Completion | `/adminlink-upload-notify` | After S3 PUT, call 2.7 with `upload_id` to finalize |
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`08_file_upload_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/08_file_upload_flow.md) — Flow 8 STEP 1：取上傳 pre-signed URL
+- [`05_change_dev_setting_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/05_change_dev_setting_flow.md) — Flow 5：設定檔 / 設定狀態 JSON 上傳
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

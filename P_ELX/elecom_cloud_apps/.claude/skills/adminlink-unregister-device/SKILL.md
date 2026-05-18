@@ -240,3 +240,12 @@ No fields to parse — 200 status alone confirms successful unregistration.
 |-------|-------|------|-------------|
 | Reverse of | 2.2 Device Registration | `/adminlink-register-device` | Reverse operation — removes what 2.2 registered |
 | Same URI | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Same URI `/v1/devices/{dev_id}` — distinguished by HTTP method (DELETE vs GET) |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`04_device_deregistration_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/04_device_deregistration_flow.md) — Flow 4：按下解除註冊鈕後的解除流程
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

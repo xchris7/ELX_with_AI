@@ -315,3 +315,13 @@ Mismatch → 4012
 |-------|-------|------|-------------|
 | Prerequisite (required) | 2.6 URL Acquisition for Upload | `/adminlink-upload-url` | Must call 2.6 first to get `upload_id` and pre-signed URL |
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`08_file_upload_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/08_file_upload_flow.md) — Flow 8 STEP 3：上傳完成通知（temp→regular）
+- [`05_change_dev_setting_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/05_change_dev_setting_flow.md) — Flow 5：設定檔上傳完成通知
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

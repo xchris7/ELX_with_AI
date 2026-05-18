@@ -261,3 +261,12 @@ File download targets are added on the NextGiga side.
 |-------|-------|------|-------------|
 | Prerequisite (required) | 2.8 URL Acquisition for Download | `/adminlink-download-url` | Must call 2.8 first to get `download_url` |
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`09_file_download_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/09_file_download_flow.md) — Flow 9：檔案下載（注意 Flow 9 圖示標「無下載完成通知」，完成回報走 Flow 7 事件；2.9 行為以本 SKILL 為準）
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

@@ -94,6 +94,7 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 | 「狀態機 / 註冊流程」 | `spec/current/SPEC_v2_AGT2_Agent.md` State Machine | `admlink_sm.c` |
 | 「JSON 共通格式」 | `spec/docs/JSON_Common_Specifications_EN.md` | — |
 | 「Zero-touch 流程」 | `spec/current/SPEC_v2_AGT4_ZeroTouch.md` + `spec/docs/zero_touch_flowchart.mmd` | — |
+| 「Agent↔Cloud 端到端流程圖（註冊/解除/設定變更/狀態上傳/檔案傳輸/遠控接收）」 | [`spec/docs/agent_cloud_linkage_flow/INDEX.md`](spec/docs/agent_cloud_linkage_flow/INDEX.md)（EJ02 衍生摘要，僅供引述對照） | `spec/current/SPEC_v2_AGT*.md` + `.claude/skills/<skill-name>/SKILL.md` |
 | 「web 設定觸發 AdminLink 上傳」（跨 fcgibox）| `.claude/skills/<skill-name>/SKILL.md` | `wab-be187/P_ELX/fcgibox/modules/submit/elecom/` + `admlink_genmsg.c` |
 | 「系統事件觸發 AdminLink event」（跨 systemdaemon）| `EVENT_ID_INDEX.md` 看 trigger 條件 | `wab-be187/P_ELX/systemdaemon/` 找對應 hook |
 
@@ -135,7 +136,7 @@ grep -rn "CLOUD_TMP_WARM_START_TOK" wab-be187/P_ELX/{elecom_cloud_apps,fcgibox,s
 - `admlink/` — source 端 daemon 主體（註冊狀態機、API 呼叫、事件處理）。第一站：先讀本檔的 `SKILL 索引` / `In-Package Search Protocol`，再進 `$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/`
 - `libadmlink/` — source 端共用 library。第一站：先讀本檔，必要時再進 `$ELX_SRC/P_ELX/elecom_cloud_apps/libadmlink/`
 - `config_manager/` — **device 端 cloud config 契約**（Excel `_export_*` 衍生的機讀 spec + meta-schema）。第一站：[`config_manager/CLAUDE.md`](config_manager/CLAUDE.md)
-- `spec/` — 正式需求、索引文件、source evidence。第一站：`spec/current/`、`spec/docs/`
+- `spec/` — 正式需求、索引文件、source evidence。第一站：`spec/current/`、`spec/docs/`；Agent↔Cloud 端到端流程引述見 [`spec/docs/agent_cloud_linkage_flow/INDEX.md`](spec/docs/agent_cloud_linkage_flow/INDEX.md)（EJ02 衍生摘要，非權威）
 - `test/` — source 端測試與驗證輔助目錄。第一站：先確認需求後再進 `$ELX_SRC/P_ELX/elecom_cloud_apps/test/`
 
 ## Domain Knowledge（深入）
