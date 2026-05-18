@@ -220,3 +220,13 @@ If KC sticky notes conflict with the main table content → **KC note takes prec
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |
 | Prerequisite | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Registration confirmed before polling software updates |
 | Related | 2.8 File Download | `/adminlink-download-url` | Download URLs from this API are used to download software updates |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`01_device_entry_software_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/01_device_entry_software_flow.md) — Flow 1 PART 2：軟體版本確認（AP/SW/WAB-BE 不適用）
+- [`02_device_entry_startup_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/02_device_entry_startup_flow.md) — Flow 2 PART 2：版本確認分支
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

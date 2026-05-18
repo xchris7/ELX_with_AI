@@ -291,3 +291,12 @@ Mismatch → 4012
 |-------|-------|------|-------------|
 | Next (required) | 2.9 File Download Completion | `/adminlink-download-notify` | After S3 GET, call 2.9 with `download_id` to trigger cleanup |
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`09_file_download_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/09_file_download_flow.md) — Flow 9 STEP 1：取下載 pre-signed URL（由 rc 2010 觸發）
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

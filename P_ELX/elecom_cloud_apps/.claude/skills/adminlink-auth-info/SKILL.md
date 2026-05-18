@@ -294,3 +294,13 @@ Use the returned credentials in this order:
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered before calling this API |
 | Next | 2.4 Registration Confirmation | `/adminlink-confirm-registration` | Confirm registration and get permission flags |
 | Uses credentials for | MQTT/IoT Core Connection | — | Returned certs and endpoints used for MQTT messaging |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`06_status_event_upload_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/06_status_event_upload_flow.md) — Flow 6：取 IoT Core credential 後 MQTT 上傳
+- [`07_remote_control_reception_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/07_remote_control_reception_flow.md) — Flow 7：取 credential 後訂閱遠控
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)

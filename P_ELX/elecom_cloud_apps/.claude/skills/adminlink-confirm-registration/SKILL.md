@@ -283,3 +283,13 @@ If KC revision sticky notes conflict with the main table → **KC note takes pre
 | Prerequisite | 2.2 Device Registration | `/adminlink-register-device` | Device must be registered first |
 | Prerequisite | 2.3 Auth Info Acquisition | `/adminlink-auth-info` | Auth info acquired before confirmation |
 | Same URI | 2.10 Device Unregistration | `/adminlink-unregister-device` | Same URI `/v1/devices/{dev_id}` — distinguished by HTTP method (GET vs DELETE) |
+
+---
+
+## 對照流程（Cloud Linkage Flow）
+
+端到端流程位置（引述對照用，**非權威**；規格仍以本 SKILL 為準）：
+
+- [`01_device_entry_software_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/01_device_entry_software_flow.md) — Flow 1 PART 1：註冊確認分支
+- [`02_device_entry_startup_flow.md`](../../../spec/docs/agent_cloud_linkage_flow/02_device_entry_startup_flow.md) — Flow 2：依回應決定顯示哪個註冊 UI
+- 索引：[`agent_cloud_linkage_flow/INDEX.md`](../../../spec/docs/agent_cloud_linkage_flow/INDEX.md)
