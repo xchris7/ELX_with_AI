@@ -51,6 +51,7 @@ ls P_ELX/elecom_cloud_apps/.claude/skills/adminlink-software-update/SKILL.md
 - **SPEC / SKILL 撰寫慣例與業界依據**：[`docs/INDUSTRY_PRACTICES_2026.md`](docs/INDUSTRY_PRACTICES_2026.md)
 - **學習路線（first-time）**：[`docs/READING_ORDER.md`](docs/READING_ORDER.md)
 - **GPL release 工具**：[`tools/gpl-toolkit/`](tools/gpl-toolkit/)（從 `~/ai_test` 以 `git subtree` 匯入）
+- **AdminLink 斷線重連測試工具**：[`tools/admlink-reconnect-test/`](tools/admlink-reconnect-test/)（裝置上驗證 IoT Core 斷線時原地換 cert 重連、不 reload daemon）
 - **Source code 真相來源**：`$ELX_SRC/`（即 `~/wab-be187/`，未來含 `~/wab-be72/`）
 - **新 package 模板**：[`docs/PACKAGE_AGENTS_TEMPLATE.md`](docs/PACKAGE_AGENTS_TEMPLATE.md)
 - **Search protocol**: [`docs/SEARCH_PROTOCOL.md`](docs/SEARCH_PROTOCOL.md) — domain routing table, cross-package search rules, single-shot grep recipes.
