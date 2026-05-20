@@ -1,127 +1,127 @@
-# admlink-reconnect-test — IoT Core 斷線重連驗證工具
+# admlink-reconnect-test — IoT Core Certificate Refresh and Reconnection Verification Tool
 
-`iotcore_reconnect_test.sh`：在裝置上驗證 **AdminLink daemon 在 IoT Core 斷線時「原地換 cert 重連、不 reload daemon」** 的修正是否生效。
-
----
-
-## 1. 它在驗證什麼
-
-ELECOM 的需求(image.png / 40_receiver 範例、Mantis #12366/#13133）：IoT Core 的認證資訊（client cert，約 24h 過期）失效造成斷線時，daemon 應**重呼 API 2.3 換 cert + 與 IoT Core 再接続**，而**不是**整個 reload。
-
-對應的 source 修正(`$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/`，以 `~/ELX_with_AI/wab-be187` 為編輯目標）：
-
-- `admlink_socket.c` — `open_nb_socket()` 內 cert/TLS 失敗的 4 個 `exit_link/exit` 改為 graceful return（含 `:219` handshake 失敗、`:237` x509 verify 失敗），不再讓 process 自殺。
-- `admlink_sm.c` — 新增 `iotcore_refresh_credentials()`（呼叫 API 2.3 `get_endpoint_info()`、寫回 `/etc/iotcore*`，dev_id 來源 **mode-aware**：ZERO-TOUCH 讀 `/tmp/temporary_dev_id` 第 1 行、NORMAL 讀 dbox token）；slow-path 由 `exit_link` 改為「換 cert → `close_conn` → 既有 `check_mqrecv` 原地重連」，並保留「API 2.3 連 3 次失敗才 fallback `exit_link`」當最後 safety net。
-- 觸發/狀態機背景見 [`spec/docs/mqtt_connection_model.md`](../../P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md)。
-
-**通過 = 斷線後 daemon PID 不變、log 出現 `refresh credentials & reconnect.`、無 `reload_module("AdminLink")`。**
+`iotcore_reconnect_test.sh`: Verifies on-device that the **AdminLink daemon in-place refreshes certificates and reconnects to IoT Core without reloading the daemon** when the connection is lost.
 
 ---
 
-## 2. 測試原理：為什麼要「雙重封鎖」
+## 1. What is Being Verified
 
-斷線重連要能驗，必須同時做到三件事：
+ELECOM's requirement (image.png / 40_receiver example, Mantis #12366/#13133): When IoT Core authentication information (client certificate, ~24h expiry) becomes invalid and causes a disconnection, the daemon should **re-call API 2.3 to refresh the certificate and reconnect to IoT Core**, not **reload the entire daemon**.
 
-| 要 | 做法 | 為什麼 |
+Corresponding source fixes (`$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/`, edited in `~/ELX_with_AI/wab-be187`):
+
+- `admlink_socket.c` — In `open_nb_socket()`, replace the 4 cert/TLS failure `exit_link/exit` calls with graceful returns (including `:219` handshake failure, `:237` x509 verify failure), preventing the process from terminating.
+- `admlink_sm.c` — Add `iotcore_refresh_credentials()` (calls API 2.3 `get_endpoint_info()`, writes back to `/etc/iotcore*`, dev_id sourced **mode-aware**: ZERO-TOUCH reads `/tmp/temporary_dev_id` line 1, NORMAL reads dbox token); slow-path changes from `exit_link` to "refresh cert → `close_conn` → in-place reconnect via existing `check_mqrecv`", preserving "API 2.3 fails 3 times → fallback to `exit_link`" as final safety net.
+- See [`spec/docs/mqtt_connection_model.md`](../../P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md) for trigger/state machine background.
+
+**Pass = daemon PID unchanged after disconnection, log shows `refresh credentials & reconnect.`, no `reload_module("AdminLink")`.**
+
+---
+
+## 2. Test Methodology: Why "Dual Blocking"
+
+To verify reconnection, three conditions must be met simultaneously:
+
+| Requirement | Method | Reason |
 |---|---|---|
-| 打斷**現有**這條 MQTT session | `iptables -d <現有 peer IP> ... DROP` | 注入假 cert 不會動到既有 TLS session（cert 只在 handshake 時讀）；要主動把現有連線弄斷 |
-| 讓**之後每次重連**都失敗 | `/etc/hosts` 把 IoT Core hostname 導到黑洞 IP `192.0.2.1` | AWS IoT endpoint 會輪詢多個 IP，只封單一 IP，daemon 重連會換到別的 IP 又連上；改在 DNS 層攔截才擋得住所有重連 |
-| 讓 **API 2.3 仍可達** | 上面兩者都只針對 IoT Core 的 host/IP，**不碰** `api.admin-link.net` | refresh 必須打得出去，daemon 才能換到新 cert；若連 API 也擋掉，只會測到 fallback reload |
+| Break the **existing** MQTT session | `iptables -d <current peer IP> ... DROP` | Injecting a fake certificate won't affect the existing TLS session (certificate is only read during handshake); must actively terminate the existing connection |
+| Make **every subsequent reconnection** fail | `/etc/hosts` routes IoT Core hostname to black hole IP `192.0.2.1` | AWS IoT endpoint polls multiple IPs; blocking a single IP allows daemon to reconnect via another IP; blocking at DNS layer blocks all reconnection attempts |
+| Keep **API 2.3 reachable** | Both methods above target IoT Core host/IP only, **do not touch** `api.admin-link.net` | Refresh must succeed, so daemon can get new cert; blocking API too only tests the fallback reload |
 
-> IoT Core 與 API 2.3 是**不同 host、同樣 443 port** —— 只能靠 host/IP 區分，不能靠 port。詳見 [`mqtt_connection_model.md`](../../P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md)。
+> IoT Core and API 2.3 use **different hosts, same port 443** — can only differentiate by host/IP, not port. See [`mqtt_connection_model.md`](../../P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md) for details.
 
-封鎖期間 daemon 的預期行為：refresh 成功（API 通）→ 取得新 cert → 但重連仍失敗（IoT Core 被 `/etc/hosts` 黑洞）→ 下一輪再 refresh …… **持續迴圈、PID 不變、不 reload**。解封後下一次重連即接回。
-
----
-
-## 3. 前置需求
-
-- 在**裝置**上以 **root** 執行（不是 build 機）。
-- 需要 `iptables`、`netstat`、`ping`、`pidof`、`grep`、`awk`（busybox 內建即可）。
-- daemon 目前**已連上** IoT Core（腳本會檢查；沒有連線就沒東西可斷）。
-- daemon log 在 `/tmp/admlink_debug.log`。
-- 修改版 binary 已部署 —— 腳本會 `grep /proc/<pid>/exe` 自動判斷；若是 pristine 會警告並詢問是否續跑。
+Expected daemon behavior during blocking: refresh succeeds (API reachable) → obtain new cert → but reconnection still fails (IoT Core blocked by `/etc/hosts`) → refresh again next cycle …… **continuous loop, PID unchanged, no reload**. After unblocking, next reconnection succeeds.
 
 ---
 
-## 4. 用法
+## 3. Prerequisites
+
+- Run on **device** as **root** (not on build machine).
+- Requires `iptables`, `netstat`, `ping`, `pidof`, `grep`, `awk` (built-in to busybox).
+- Daemon currently **connected to** IoT Core (script checks this; no connection means nothing to break).
+- Daemon log at `/tmp/admlink_debug.log`.
+- Modified binary already deployed — script auto-checks via `grep /proc/<pid>/exe`; warns if pristine and asks to proceed.
+
+---
+
+## 4. Usage
 
 ```sh
-# 複製到裝置(例如 scp 到 /tmp),然後:
+# Copy to device (e.g., scp to /tmp), then:
 chmod +x iotcore_reconnect_test.sh
 ./iotcore_reconnect_test.sh
 ```
 
-可用環境變數調整：
+Adjustable via environment variables:
 
 ```sh
-BLOCK_SEC=300 ./iotcore_reconnect_test.sh   # 封鎖觀察時長,預設 240s
-WATCH_SEC=180 ./iotcore_reconnect_test.sh   # 解封後等待重連時長,預設 120s
+BLOCK_SEC=300 ./iotcore_reconnect_test.sh   # blocking observation duration, default 240s
+WATCH_SEC=180 ./iotcore_reconnect_test.sh   # wait time for reconnect after unblocking, default 120s
 ```
 
-腳本流程：`0 前置檢查 → 1 雙重封鎖 → 2 觀察 BLOCK_SEC → 3 解封還原 → 4 等待重連 → 5 判定`。
-建議另開一個 console 同步 `tail -F /tmp/admlink_debug.log` 看細節。
+Script flow: `0 pre-checks → 1 dual block → 2 observe for BLOCK_SEC → 3 unblock and restore → 4 wait for reconnect → 5 verdict`.
+Recommended: open another console and run `tail -F /tmp/admlink_debug.log` to monitor details.
 
 ---
 
-## 5. 如何判讀結果
+## 5. Interpreting Results
 
-腳本最後印 `PASS / FAIL / UNCERTAIN`。對照 log 關鍵字:
+Script prints `PASS / FAIL / UNCERTAIN` at the end. Cross-reference with log keywords:
 
-| log 關鍵字 | 意義 |
+| Log Keyword | Meaning |
 |---|---|
-| `MQTT recv error; refresh credentials & reconnect.` | **修正版 slow-path 觸發** —— 要看到這行 |
-| `bio_do_conect failed` | 重連嘗試到黑洞 IP 失敗（封鎖期間正常會反覆出現） |
-| `conn[N] closed` | refresh 成功後 `close_conn(mqrecv/mqupld)` |
-| `AdminLink shutdown` / `Zero Touch check flow` | **整包 reload** —— PASS 情境下不該出現 |
-| `set mqtt_subscribe ... ret is 1` | 重新訂閱成功（解封後應出現） |
+| `MQTT recv error; refresh credentials & reconnect.` | **Modified slow-path triggered** — this line must appear |
+| `bio_do_conect failed` | Reconnection attempt to black hole IP failed (normal to appear repeatedly during blocking) |
+| `conn[N] closed` | `close_conn(mqrecv/mqupld)` after refresh success |
+| `AdminLink shutdown` / `Zero Touch check flow` | **Full reload** — should NOT appear in PASS scenario |
+| `set mqtt_subscribe ... ret is 1` | Re-subscription successful (should appear after unblocking) |
 
-- **PASS**：`refresh credentials & reconnect.` 有出現、PID 全程不變、無 `AdminLink shutdown`。
-- **FAIL**：PID 改變或出現 `AdminLink shutdown`。若 binary 是 pristine 屬預期；若是修改版需檢查。
-- **UNCERTAIN**：未觀察到預期事件 —— 多半是封鎖沒打中（看步驟 1 的 ping 驗證）或 `BLOCK_SEC` 太短。
+- **PASS**: `refresh credentials & reconnect.` appears, PID unchanged throughout, no `AdminLink shutdown`.
+- **FAIL**: PID changed or `AdminLink shutdown` appears. If binary is pristine, this is expected; if modified, needs investigation.
+- **UNCERTAIN**: Expected events not observed — usually blocking didn't hit (check step 1 ping verification) or `BLOCK_SEC` too short.
 
-NORMAL 與 ZERO-TOUCH 兩種模式都適用；ZERO-TOUCH 下 refresh 成功即同時驗證了「mode-aware dev_id（讀 `/tmp/temporary_dev_id`）」正確。
+Both NORMAL and ZERO-TOUCH modes supported; in ZERO-TOUCH, refresh success also validates "mode-aware dev_id (reading `/tmp/temporary_dev_id`)" is correct.
 
 ---
 
-## 6. 它改動什麼、如何還原（安全性）
+## 6. Changes Made and How to Restore (Safety)
 
-腳本只做兩種**可還原**的改動：
+Script makes only two **reversible** changes:
 
-1. **`/etc/hosts`** —— 附加一行帶標記 `# iotcore-reconnect-test` 的黑洞紀錄。
-2. **iptables OUTPUT** —— 對現有 peer IP 各加一條 `DROP tcp dport 443`。
+1. **`/etc/hosts`** — appends a black hole record marked with `# iotcore-reconnect-test`.
+2. **iptables OUTPUT** — adds `DROP tcp dport 443` rule for each existing peer IP.
 
-還原由 `cleanup()` 負責，且：
+Restoration handled by `cleanup()`:
 
-- 掛在 `trap ... INT TERM EXIT` —— **即使中途 Ctrl+C 也會還原**。
-- **idempotent** —— 重複呼叫安全。
-- `/etc/hosts` 採**標記行精準移除**（`grep -v "$MARK"`），不動使用者原有內容；若該檔原本不存在、移除後變空，會把整個檔刪掉，完全回到原狀。
-  （這修正了早期版本的 bug：原機沒有 `/etc/hosts` 時 `cp` 備份失效，導致黑洞那行殘留、daemon 一直連不回。）
+- Attached to `trap ... INT TERM EXIT` — **even Ctrl+C mid-script triggers restoration**.
+- **idempotent** — safe to call repeatedly.
+- `/etc/hosts` uses **marked-line precise removal** (`grep -v "$MARK"`), leaving user content untouched; if file didn't exist and becomes empty after removal, entire file is deleted, returning to original state.
+  (This fixes earlier bug: when device had no `/etc/hosts`, `cp` backup failed, leaving black hole line behind and preventing daemon from reconnecting.)
 
-若腳本被強制中斷（`kill -9`）未跑到 cleanup，手動還原：
+If script is forcibly interrupted (`kill -9`) before cleanup runs, manually restore:
 
 ```sh
-# 移除 /etc/hosts 黑洞那行
+# Remove /etc/hosts black hole line
 grep -v 'iotcore-reconnect-test' /etc/hosts > /tmp/h && cat /tmp/h > /etc/hosts
-[ -s /etc/hosts ] || rm -f /etc/hosts          # 原本不存在就刪掉
-# 清掉殘留 iptables 規則
-iptables -L OUTPUT -n --line-numbers | grep ':443'   # 找出 line number 後 iptables -D OUTPUT <n>
+[ -s /etc/hosts ] || rm -f /etc/hosts          # delete if originally didn't exist
+# Clean up stray iptables rules
+iptables -L OUTPUT -n --line-numbers | grep ':443'   # find line numbers, then iptables -D OUTPUT <n>
 ```
 
 ---
 
-## 7. 已知限制 / 注意事項
+## 7. Known Limitations / Caveats
 
-- **`/etc/hosts` 須被 resolver 採用**：腳本步驟 1 會 `ping` 驗證並顯示是否導向 `192.0.2.1`。若此機有 DNS cache（dnsmasq 等）不吃 `/etc/hosts`，會警告 —— 此時 daemon 重連可能仍連得上、測不準。
-- **netstat 抓 peer 的假設**：busybox `netstat` 無 `-p`，腳本以「對外 :443 ESTABLISHED」當作 admlink 的 MQTT 連線。閒置時這通常成立（API 2.3 是短命連線、平常不在）；若剛好有其他程式在連 :443，會被一併短暫封鎖。
-- **AWS IP 輪詢**:正因如此才用 `/etc/hosts` 攔 DNS,而非單純封 IP。
-- 觀察時間：MQTT keepalive 60s，斷線偵測到 slow-path 觸發約需 1–3 分鐘，`BLOCK_SEC` 預設 240s 已含餘裕；環境慢可調大。
+- **`/etc/hosts` must be consulted by resolver**: Script step 1 pings and displays whether it routes to `192.0.2.1`. If device has DNS cache (dnsmasq, etc.) that ignores `/etc/hosts`, it warns — daemon may still reconnect and test will be unreliable.
+- **netstat peer assumption**: busybox `netstat` lacks `-p`; script assumes "outbound :443 ESTABLISHED" is admlink's MQTT connection. During idle this usually holds (API 2.3 is short-lived, normally absent); if another process coincidentally connects to :443, it gets briefly blocked too.
+- **AWS IP polling**: This is why we block at DNS layer via `/etc/hosts`, not just by IP.
+- Observation timing: MQTT keepalive 60s, disconnect detection to slow-path trigger takes ~1–3 minutes, `BLOCK_SEC` default 240s already includes margin; adjust higher for slow environments.
 
 ---
 
-## 8. 參照
+## 8. References
 
-- 連線模型背景：[`P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md`](../../P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md)
-- API 2.3 規格：`P_ELX/elecom_cloud_apps/.claude/skills/adminlink-auth-info/SKILL.md`
-- ZERO-TOUCH 待機/重連規格：`P_ELX/elecom_cloud_apps/spec/current/SPEC_v2_AGT4_ZeroTouch.md`（AGT.4.3.50/.52 斷線→重連、AGT.4.3.103 待機結束才回 AGT.2.1.0）
-- 修正涉及的 source：`$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/admlink_socket.c`、`admlink_sm.c`
+- Connection model background: [`P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md`](../../P_ELX/elecom_cloud_apps/spec/docs/mqtt_connection_model.md)
+- API 2.3 spec: `P_ELX/elecom_cloud_apps/.claude/skills/adminlink-auth-info/SKILL.md`
+- ZERO-TOUCH standby/reconnect spec: `P_ELX/elecom_cloud_apps/spec/current/SPEC_v2_AGT4_ZeroTouch.md` (AGT.4.3.50/.52 disconnect→reconnect, AGT.4.3.103 standby end returns to AGT.2.1.0)
+- Source changes involved: `$ELX_SRC/P_ELX/elecom_cloud_apps/admlink/admlink_socket.c`, `admlink_sm.c`
