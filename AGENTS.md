@@ -27,6 +27,18 @@ ls P_ELX/elecom_cloud_apps/.claude/skills/adminlink-software-update/SKILL.md
 - **Do not** recursively grep the whole `wab-be187/` — narrow to a single P_ELX package first (see [`docs/SEARCH_PROTOCOL.md`](docs/SEARCH_PROTOCOL.md) for domain routing).
 - **Do not** read `wab-be72/` — different hardware target; only enter when the user explicitly asks.
 
+## Commit Rules
+
+- **絕不** commit `wab-be187/`、`wab-be72/`（或任何 `wab-be*/`）資料夾——這些是 source code worktree，屬於另一個 repo，**不屬於** ELX_with_AI。
+
+  ```bash
+  # 正確：只 stage 知識層檔案
+  git add P_ELX/ docs/ tools/ AGENTS.md CLAUDE.md
+  # 錯誤：git add wab-be187/  ← 嚴禁
+  ```
+
+- commit 前先執行 `git status`，確認 staged 清單內無 `wab-be*/` 路徑。
+
 ## Counterintuitive: Read These Before Editing SPEC/SKILL
 
 這些反直覺規則 AI 不可能自己推出來，違反會錯得很離譜：

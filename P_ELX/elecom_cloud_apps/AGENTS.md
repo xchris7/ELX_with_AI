@@ -93,6 +93,7 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 | 「config 欄位 X 對應」 | [`config_manager/CLAUDE.md`](config_manager/CLAUDE.md) + `spec.json` | `config_manager/dbox_to_json/` source |
 | 「狀態機 / 註冊流程」 | `spec/current/SPEC_v2_AGT2_Agent.md` State Machine | `admlink_sm.c` |
 | 「MQTT 連線 / IoT Core 連線是什麼 / mqrecv vs mqupld」 | [`spec/docs/mqtt_connection_model.md`](spec/docs/mqtt_connection_model.md) | `admlink_sm.c` 的 `check_mqrecv` / `check_mqupld` |
+| 「斷線偵測 / 原地重連 / 為何不 reload / ping 看門狗 / isMqttReceviedErr」 | [`spec/docs/iotcore_disconnect_recovery.md`](spec/docs/iotcore_disconnect_recovery.md) | `admlink_sm.c` 的 `chk_agstatm` |
 | 「JSON 共通格式」 | `spec/docs/JSON_Common_Specifications_EN.md` | — |
 | 「Zero-touch 流程」 | `spec/current/SPEC_v2_AGT4_ZeroTouch.md` + `spec/docs/zero_touch_flowchart.mmd` | — |
 | 「Agent↔Cloud 端到端流程圖（註冊/解除/設定變更/狀態上傳/檔案傳輸/遠控接收）」 | [`spec/docs/agent_cloud_linkage_flow/INDEX.md`](spec/docs/agent_cloud_linkage_flow/INDEX.md)（EJ02 衍生摘要，僅供引述對照） | `spec/current/SPEC_v2_AGT*.md` + `.claude/skills/<skill-name>/SKILL.md` |

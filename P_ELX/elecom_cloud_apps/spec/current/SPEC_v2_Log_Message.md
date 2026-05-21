@@ -12,21 +12,22 @@
 
 ### AGT.1.4 — Device Registration Status Check
 
-| Spec ID | Level | English Log Message |
+| Spec ID(s) | Level | English Log Message |
 |---|---|---|
 | AGT.1.4.1.3 | Information | `[AdminLink] No device ID. AdminLink service unregistered.` |
-| AGT.1.4.12 | Information | `[AdminLink] Device registration result : Registered` |
+| AGT.1.4.12 / AGT.2.3.31 | Information | `[AdminLink] Device registration result : Registered` |
 | AGT.1.4.23 | Information | `[AdminLink] Device registration result : Unregistered (re-registered enabled)` |
 | AGT.1.4.33 | Information | `[AdminLink] Device registration result : Unregistered` |
-| AGT.1.4.42 | Error | `[AdminLink] Device registration result : Error（error_id=%d, error_msg=%s, error_field=%s, error_value=%s）` |
-| AGT.1.4.52 | Error | `[AdminLink] Device registration result : Communication error` |
+| AGT.1.4.42 / AGT.2.1.32 / AGT.2.3.21 | Error | `[AdminLink] Device registration result : Error（error_id=%d, error_msg=%s, error_field=%s, error_value=%s）` |
+| **AGT.1.3.22B / AGT.1.4.52 / AGT.2.3.21 / AGT.2.4.61** | Error | `[AdminLink] Device registration result : Communication error` |
 
 **Trigger conditions:**
 - `AGT.1.4.12`: Response status 200 & `dev_id_changed=0` (already registered)
 - `AGT.1.4.23`: Response status 200 & `dev_id_changed=1` (can be re-registered)
 - `AGT.1.4.33`: Response status 401 (unregistered)
 - `AGT.1.4.42`: Response status other than 200 or 401
-- `AGT.1.4.52`: Cannot call Web API due to communication error
+- `AGT.1.4.52`: Cannot call Web API due to communication error  
+  (共用 spec IDs: AGT.1.3.22B, AGT.2.3.21, AGT.2.4.61)
 
 ---
 
@@ -75,7 +76,7 @@
 
 ### AGT.2.1 / AGT.2.2 — Start / Stop Agent Function
 
-| Spec ID | Level | English Log Message |
+| Spec ID(s) | Level | English Log Message |
 |---|---|---|
 | AGT.2.1.2 / AGT.2.1.12 | Information | `[AdminLink] Start AdminLink agent function` |
 | AGT.2.1.14 | Information | `[AdminLink] Registration information deleted. The MAC address on the configuration is different from the one of the device.` |
@@ -85,11 +86,12 @@
 
 ### AGT.2.3 — Daily Processing (every 24 hours)
 
-| Spec ID | Level | English Log Message |
+| Spec ID(s) | Level | English Log Message |
 |---|---|---|
 | AGT.2.3.3 | Information | `[AdminLink] Start AdminLink daily processing` |
-| AGT.2.3.42 | Information | `[AdminLink] Stop AdminLink agent function caused by device not registered` |
+| AGT.2.3.42 / AGT.3.1.41 | Information | `[AdminLink] Stop AdminLink agent function caused by device not registered` |
 | AGT.2.3.53 | Error | `[AdminLink] Stop AdminLink agent function caused by failed to delete JSON data` |
+| AGT.2.4.72 | (參見 AGT.1.4 區塊) | 1時間毎の登録状態確認の結果、「未登録」であるため、エージェント機能を停止 |
 
 ---
 
@@ -139,13 +141,13 @@
 
 ### AGT.3.1 — Remote Control Reception
 
-| Spec ID | Level | English Log Message | Note |
+| Spec ID(s) | Level | English Log Message | Note |
 |---|---|---|---|
-| AGT.3.1.11 | Information | `[AdminLink] Start to accept remote operations` | |
-| AGT.3.1.22 | Error | `[AdminLink] Failed to start accepting remote operations` | |
-| AGT.3.1.41 | Information | `[AdminLink] Stop to accept remote operations` | |
+| AGT.3.1.11 / AGT.4.3.11 | Information | `[AdminLink] Start to accept remote operations` | |
+| AGT.3.1.22 / AGT.4.3.21 | Error | `[AdminLink] Failed to start accepting remote operations` | |
+| AGT.2.3.42 / AGT.3.1.41 | Information | `[AdminLink] Stop to accept remote operations` | |
 | AGT.3.1.51 | Error | `[AdminLink] Failed to stop accepting remote operations` | |
-| AGT.3.1.61 | Error | `[AdminLink] Disconnected the acceptance remote operations` | |
+| AGT.3.1.61 / AGT.4.3.51 | Error | `[AdminLink] Disconnected the acceptance remote operations` | |
 | AGT.3.1.81 | Information | `[AdminLink] Completed execution remote operations（ID=%d）` | `%d` = Remote control ID |
 | AGT.3.1.91 | Error | `[AdminLink] Failed execution remote operations（ID=%d）` | `%d` = Remote control ID |
 
@@ -156,13 +158,13 @@
 | Spec ID | Level | English Log Message |
 |---|---|---|
 | AGT.3.2.21 | Error | `[AdminLink] Failed to get file download URL（status_code=%d, error_id=%d, error_msg=%s, error_field=%s, error_value=%s）` |
-| AGT.3.2.21 | Error | `[AdminLink] Failed to get file download URL(communication error）.` |
+| AGT.3.2.21 (comm err) | Error | `[AdminLink] Failed to get file download URL(communication error）.` |
 | AGT.3.2.41 (ID:2010 F/W update) | Error | `[AdminLink] Failed to download firmware update file` |
 | AGT.3.2.41 (ID:5070 Change Config) | Error | `[AdminLink] Failed to download Configuration data JSON file.` |
 | AGT.3.2.41 (ID:5080 Config Restore) | Error | `[AdminLink] Failed to download Configuration information file.` |
 | AGT.3.2.61 | Error | `[AdminLink] Download file is not correct hash` |
 | AGT.3.2.71 | Error | `[AdminLink] Failed to notice file download completion（status_code=%d, error_id=%d, error_msg=%s, error_field=%s, error_value=%s）` |
-| AGT.3.2.71 | Error | `[AdminLink] Failed to notice file download completion(communication error).` |
+| AGT.3.2.71 (comm err) | Error | `[AdminLink] Failed to notice file download completion(communication error).` |
 | AGT.3.2.91 | Error | `[AdminLink] Failed to upgrade FW` |
 | AGT.3.2.91.1 | Error | `[AdminLink] Failed to change device settings using the "Configuration Data JSON" file.` |
 | AGT.3.2.91.2 | Error | `[AdminLink] Failed to restore device settings using the "Configuration Information" file.` |
@@ -174,13 +176,13 @@
 | Spec ID | Level | English Log Message |
 |---|---|---|
 | AGT.3.3.21 | Error | `[AdminLink] Failed to get file upload URL（status_code=%d, error_id=%d, error_msg=%s, error_field=%s, error_value=%s）.` |
-| AGT.3.3.21 | Error | `[AdminLink] Failed to get file upload URL（communication error）.` |
+| AGT.3.3.21 (comm err) | Error | `[AdminLink] Failed to get file upload URL（communication error）.` |
 | AGT.3.3.41 (ID:4020 Log file) | Error | `[AdminLink] Failed to upload log file` |
 | AGT.3.3.41 (ID:4030 Config info) | Error | `[AdminLink] Failed to upload Configuration information file.` |
 | AGT.3.3.41 (ID:4040 Conn client) | Error | `[AdminLink] Failed to upload Connection client file.` |
 | AGT.3.3.41 (ID:5060 Config JSON) | Error | `[AdminLink] Failed to upload Configuration data JSON file.` |
 | AGT.3.3.61 | Error | `[AdminLink] Failed to notice file upload completion（status_code=%d, error_id=%d, error_msg=%s, error_field=%s, error_value=%s）` |
-| AGT.3.3.61 | Error | `[AdminLink] Failed to notice file upload completion（communication error）.` |
+| AGT.3.3.61 (comm err) | Error | `[AdminLink] Failed to notice file upload completion（communication error）.` |
 
 ---
 
@@ -216,6 +218,21 @@
 |---|---|---|
 | AGT.4.3.22 / AGT.4.3.41 | Information | `[AdminLink] Temporary registration expiration date (YYYY/MM/DD hh:mm:ss) has passed.` |
 | AGT.4.3.94 | Information | `[AdminLink] Device successfully auto-registered.` |
+
+---
+
+## Appendix — Cross-Reference Index (多 Spec ID 共用同一 Log)
+
+| Log Message | Related Spec IDs |
+|---|---|
+| `[AdminLink] Device registration result : Registered` | AGT.1.4.12, AGT.2.3.31 |
+| `[AdminLink] Device registration result : Error(...)` | AGT.1.4.42, AGT.2.1.32, AGT.2.3.21 |
+| `[AdminLink] Device registration result : Communication error` | **AGT.1.3.22B, AGT.1.4.52, AGT.2.3.21, AGT.2.4.61** |
+| `[AdminLink] Start to accept remote operations` | AGT.3.1.11, AGT.4.3.11 |
+| `[AdminLink] Failed to start accepting remote operations` | AGT.3.1.22, AGT.4.3.21 |
+| `[AdminLink] Stop to accept remote operations` | AGT.2.3.42, AGT.3.1.41 |
+| `[AdminLink] Disconnected the acceptance remote operations` | AGT.3.1.61, AGT.4.3.51 |
+| `[AdminLink] Start AdminLink agent function` | AGT.2.1.2, AGT.2.1.12 |
 
 ---
 
