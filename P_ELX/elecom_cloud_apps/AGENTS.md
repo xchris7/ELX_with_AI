@@ -21,6 +21,7 @@ ls $ELX_SRC/P_ELX/elecom_cloud_apps/{admlink,libadmlink,config_manager/{dbox_to_
 - **不要**自編 API 行為——所有 API 細節以 `.claude/skills/<skill-name>/SKILL.md` 為唯一真相。
 - **改 `admlink/admlink_socket.c` 之前**：先讀 `.claude/skills/` 內所有提及 `BIO_*` 的 SKILL，並理解 BIO 所有權移交陷阱（見下方反直覺第 2 條）。
 - **新增 SKILL 檔**：必對應 SPEC.xlsx 已定義的 API。憑空造的「想像 API」不收。
+- **查詢 `act_id` / `rcid` / event 編號意義**：必須先讀 [`spec/docs/EVENT_ID_INDEX.md`](spec/docs/EVENT_ID_INDEX.md)，不得直接 grep source 或以 IDE 開啟的 file 作為起點。
 
 ## Counterintuitive: AdminLink 領域陷阱
 
@@ -85,6 +86,8 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 
 問問題前先對照「問題類型 → 第一站」決策。第一站讀完通常就有答案；第二站才是 fallback grep source。
 
+> ⚠️ **`ide_opened_file` 不作為起點**：IDE 開啟的 source file 只是編輯參考。任何規格查詢（act_id、rcid、API 行為）一律依此表路由，不得從 IDE 所開啟的 file 開始讀。
+
 | 問題類型範例 | 第一站 | 第二站 |
 |---|---|---|
 | 「act_id N 是什麼 / 何時觸發」 | [`spec/docs/EVENT_ID_INDEX.md`](spec/docs/EVENT_ID_INDEX.md) | `grep "\"act_id\":N"` in `wab-be187/.../admlink/*.c` |
@@ -92,6 +95,8 @@ API 呼叫流程：`2.2 → 2.3 → 2.4`（註冊三部曲），檔案傳輸 `2.
 | 「API X 規格 / error code」 | `.claude/skills/<skill-name>/SKILL.md` | `spec/current/SPEC_v2_AGT*.md` |
 | 「config 欄位 X 對應」 | [`config_manager/CLAUDE.md`](config_manager/CLAUDE.md) + `spec.json` | `config_manager/dbox_to_json/` source |
 | 「狀態機 / 註冊流程」 | `spec/current/SPEC_v2_AGT2_Agent.md` State Machine | `admlink_sm.c` |
+| 「MQTT 連線 / IoT Core 連線是什麼 / mqrecv vs mqupld」 | [`spec/docs/mqtt_connection_model.md`](spec/docs/mqtt_connection_model.md) | `admlink_sm.c` 的 `check_mqrecv` / `check_mqupld` |
+| 「斷線偵測 / 原地重連 / 為何不 reload / ping 看門狗 / isMqttReceviedErr」 | [`spec/docs/iotcore_disconnect_recovery.md`](spec/docs/iotcore_disconnect_recovery.md) | `admlink_sm.c` 的 `chk_agstatm` |
 | 「JSON 共通格式」 | `spec/docs/JSON_Common_Specifications_EN.md` | — |
 | 「Zero-touch 流程」 | `spec/current/SPEC_v2_AGT4_ZeroTouch.md` + `spec/docs/zero_touch_flowchart.mmd` | — |
 | 「Agent↔Cloud 端到端流程圖（註冊/解除/設定變更/狀態上傳/檔案傳輸/遠控接收）」 | [`spec/docs/agent_cloud_linkage_flow/INDEX.md`](spec/docs/agent_cloud_linkage_flow/INDEX.md)（EJ02 衍生摘要，僅供引述對照） | `spec/current/SPEC_v2_AGT*.md` + `.claude/skills/<skill-name>/SKILL.md` |

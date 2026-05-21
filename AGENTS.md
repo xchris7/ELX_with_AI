@@ -26,6 +26,19 @@ ls P_ELX/elecom_cloud_apps/.claude/skills/adminlink-software-update/SKILL.md
 - 修改 `docs/INDUSTRY_PRACTICES_2026.md` 第 8 節時，**先讀 [READING_ORDER.md](docs/READING_ORDER.md) 的 Stage 1+2**，避免違反業界 2026 共識。
 - **Do not** recursively grep the whole `wab-be187/` — narrow to a single P_ELX package first (see [`docs/SEARCH_PROTOCOL.md`](docs/SEARCH_PROTOCOL.md) for domain routing).
 - **Do not** read `wab-be72/` — different hardware target; only enter when the user explicitly asks.
+- **Do not** treat `ide_opened_file` as the search starting point for spec/concept queries (e.g., `act_id`, event ID, API behavior, rcid). Always read the relevant `P_ELX/<package>/AGENTS.md` first to get the routing table; `ide_opened_file` is only an editing reference, not a navigation anchor.
+
+## Commit Rules
+
+- **絕不** commit `wab-be187/`、`wab-be72/`（或任何 `wab-be*/`）資料夾——這些是 source code worktree，屬於另一個 repo，**不屬於** ELX_with_AI。
+
+  ```bash
+  # 正確：只 stage 知識層檔案
+  git add P_ELX/ docs/ tools/ AGENTS.md CLAUDE.md
+  # 錯誤：git add wab-be187/  ← 嚴禁
+  ```
+
+- commit 前先執行 `git status`，確認 staged 清單內無 `wab-be*/` 路徑。
 
 ## Counterintuitive: Read These Before Editing SPEC/SKILL
 
@@ -46,11 +59,20 @@ ls P_ELX/elecom_cloud_apps/.claude/skills/adminlink-software-update/SKILL.md
 5. **`(Refer AGT.x.y)` 是檔案內 cross-ref，不是外部連結**
    只在同一份 SPEC 內查找，不要去 grep 整個 repo。
 
+6. **「意圖 vs 實作」類問題 → SPEC 先讀，source code 後讀**
+   觸發條件：問題需要判斷「當初設計要求是什麼」，例如：
+   - *「設計對嗎」「這個值合理嗎」「架構有問題嗎」「有沒有 bug」*
+   - *「為什麼這樣設計」「符合規格嗎」「這樣做正確嗎」*
+
+   **規則**：先讀 `spec/current/SPEC_v2_*.md` 確認 intended behavior，再對照 source code 找落差。
+   反過來（先看 source code 再判斷）等於用「現況」當標準，會把 implementation bug 認成合理設計。
+
 ## Domain Knowledge
 
 - **SPEC / SKILL 撰寫慣例與業界依據**：[`docs/INDUSTRY_PRACTICES_2026.md`](docs/INDUSTRY_PRACTICES_2026.md)
 - **學習路線（first-time）**：[`docs/READING_ORDER.md`](docs/READING_ORDER.md)
 - **GPL release 工具**：[`tools/gpl-toolkit/`](tools/gpl-toolkit/)（從 `~/ai_test` 以 `git subtree` 匯入）
+- **AdminLink 斷線重連測試工具**：[`tools/admlink-reconnect-test/`](tools/admlink-reconnect-test/)（裝置上驗證 IoT Core 斷線時原地換 cert 重連、不 reload daemon）
 - **Source code 真相來源**：`$ELX_SRC/`（即 `~/wab-be187/`，未來含 `~/wab-be72/`）
 - **新 package 模板**：[`docs/PACKAGE_AGENTS_TEMPLATE.md`](docs/PACKAGE_AGENTS_TEMPLATE.md)
 - **Search protocol**: [`docs/SEARCH_PROTOCOL.md`](docs/SEARCH_PROTOCOL.md) — domain routing table, cross-package search rules, single-shot grep recipes.
